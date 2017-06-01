@@ -1,0 +1,9 @@
+C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\frm_LogIn\bin\Debug\frm_LogIn.exe.config
+C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\frm_LogIn\bin\Debug\frm_LogIn.exe
+C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\frm_LogIn\bin\Debug\frm_LogIn.pdb
+C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\frm_LogIn\obj\Debug\frm_LogIn.csprojResolveAssemblyReference.cache
+C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\frm_LogIn\obj\Debug\frm_LogIn.Properties.Resources.resources
+C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\frm_LogIn\obj\Debug\frm_LogIn.csproj.GenerateResource.Cache
+C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\frm_LogIn\obj\Debug\frm_LogIn.exe
+C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\frm_LogIn\obj\Debug\frm_LogIn.pdb
+C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\frm_LogIn\obj\Debug\frm_LogIn.frm_LogIn.resources
