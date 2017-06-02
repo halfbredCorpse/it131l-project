@@ -52,7 +52,7 @@ END
 
 CREATE TABLE Bank_Account(
 	Account_Number int PRIMARY KEY NOT NULL,
-	Balance decimal(20,2),
+	Balance decimal(20,2) NOT NULL,
 	First_Name varchar(30),
 	Last_Name varchar(30),
 	PIN varchar(6) NOT NULL
@@ -61,7 +61,7 @@ CREATE TABLE Bank_Account(
 CREATE TABLE Transaction_History(
 	Transaction_Number int IDENTITY(100000,1) PRIMARY KEY NOT NULL,
 	Transaction_Type varchar(25) NOT NULL,
-	Amount decimal(20,2),
+	Amount decimal(20,2) NOT NULL,
 	Date_Time datetime NOT NULL,
 	Account_Number bigint NOT NULL
 );
