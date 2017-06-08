@@ -57,7 +57,7 @@ namespace frm_LogIN
                     MessageBox.Show("Your Account Number or PIN is incorrect.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                    //txt_AccountNumber.Clear();
+                    txt_AccountNumber.Clear();
                     txt_Pin.Clear();
                 
             }
