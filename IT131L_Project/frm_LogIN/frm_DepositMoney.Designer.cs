@@ -70,7 +70,7 @@
             // lbl_DepositMessage
             // 
             this.lbl_DepositMessage.AutoSize = true;
-            this.lbl_DepositMessage.Location = new System.Drawing.Point(21, 15);
+            this.lbl_DepositMessage.Location = new System.Drawing.Point(29, 15);
             this.lbl_DepositMessage.Name = "lbl_DepositMessage";
             this.lbl_DepositMessage.Size = new System.Drawing.Size(98, 13);
             this.lbl_DepositMessage.TabIndex = 8;

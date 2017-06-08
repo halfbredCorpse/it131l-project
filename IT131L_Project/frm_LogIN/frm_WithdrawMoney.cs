@@ -30,7 +30,7 @@ namespace frm_LogIN
             DialogResult dialog = MessageBox.Show("Are you sure you want to cancel your withdrawal?", "Exiting", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
-                mainMenu.Enabled = true;
+                mainMenu.Show();
             else
                 e.Cancel = true;
         }

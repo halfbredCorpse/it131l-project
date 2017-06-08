@@ -31,7 +31,7 @@ namespace frm_LogIN
                 "Exiting", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
-                mainMenu.Enabled = true;
+                mainMenu.Show();
             else
                 e.Cancel = true;
         }

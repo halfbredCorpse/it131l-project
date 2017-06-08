@@ -34,7 +34,7 @@ namespace frm_LogIN
 
         private void frm_BalanceInquiry_FormClosing(object sender, FormClosingEventArgs e)
         {
-            mainMenu.Enabled = true;
+            mainMenu.Show();
         }
     }
 }

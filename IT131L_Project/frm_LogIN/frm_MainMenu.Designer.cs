@@ -100,7 +100,7 @@
             // 
             this.lbl_FullName.AutoSize = true;
             this.lbl_FullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FullName.Location = new System.Drawing.Point(44, 22);
+            this.lbl_FullName.Location = new System.Drawing.Point(47, 22);
             this.lbl_FullName.Name = "lbl_FullName";
             this.lbl_FullName.Size = new System.Drawing.Size(193, 15);
             this.lbl_FullName.TabIndex = 6;
@@ -121,6 +121,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_MainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Banks Banking - Main Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_MainMenu_FormClosing);
             this.Load += new System.EventHandler(this.frm_MainMenu_Load);
