@@ -1,0 +1,10 @@
+E:\Google Drive\IT131L_AC2\IT131L_Project_Sample\WritingDataToSQL\bin\Debug\WritingDataToSQL.exe.config
+E:\Google Drive\IT131L_AC2\IT131L_Project_Sample\WritingDataToSQL\bin\Debug\WritingDataToSQL.exe
+E:\Google Drive\IT131L_AC2\IT131L_Project_Sample\WritingDataToSQL\bin\Debug\WritingDataToSQL.pdb
+E:\Google Drive\IT131L_AC2\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.csprojResolveAssemblyReference.cache
+E:\Google Drive\IT131L_AC2\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Form1.resources
+E:\Google Drive\IT131L_AC2\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Properties.Resources.resources
+E:\Google Drive\IT131L_AC2\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.csproj.GenerateResource.Cache
+E:\Google Drive\IT131L_AC2\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.exe
+E:\Google Drive\IT131L_AC2\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.pdb
+E:\Google Drive\IT131L_AC2\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Form2.resources
