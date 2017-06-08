@@ -54,9 +54,9 @@ USE Project;
 
 CREATE TABLE Bank_Account(
 	Account_Number int IDENTITY(10000000,1) PRIMARY KEY NOT NULL,
-	Balance decimal(20,2) NOT NULL,
 	First_Name varchar(30),
 	Last_Name varchar(30),
+	Balance decimal(20,2) NOT NULL,
 	PIN varchar(6) NOT NULL
 );
 
@@ -68,9 +68,9 @@ CREATE TABLE Transaction_History(
 	Account_Number bigint NOT NULL
 );
 
-INSERT INTO Bank_Account VALUES (10000.96, 'Nath', 'Aguas', '123456');
-INSERT INTO Bank_Account VALUES (14482.10, 'John', 'Doe', '647282');
-INSERT INTO Bank_Account VALUES (200125.53, 'Maria', 'Makiling', '042168');
+INSERT INTO Bank_Account VALUES ('Nath', 'Aguas', 10000.96, '123456');
+INSERT INTO Bank_Account VALUES ('John', 'Doe', 14482.10, '647282');
+INSERT INTO Bank_Account VALUES ('Maria', 'Makiling', 200125.53, '042168');
 
 SELECT * FROM Bank_Account;
 SELECT * FROM Transaction_History;
