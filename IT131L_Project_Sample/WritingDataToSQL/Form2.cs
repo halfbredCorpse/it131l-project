@@ -35,53 +35,53 @@ namespace WritingDataToSQL
             {
                 for (int col = 0; col < dt.Columns.Count; col++)
                 {
-                    if (col==0)
+                    if (col == 0)
                     list = new ListViewItem(dt.Rows[row][col].ToString());
-                    else if (col>0)
+
+                    else if (col > 0)
                     {
                         if (dt.Rows[row][col].ToString() == "")
                             list.SubItems.Add("NULL");
                         else
                         list.SubItems.Add(dt.Rows[row][col].ToString());
-                    }
-                       
-
-                    
+                    }                    
                 }
                 listView1.Items.Add(list);
-            }    
-            
-                    
+            }     
             listView1.EndUpdate();
         }
-
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
-        /*// console app version
-                 
-        ListViewItem list = new ListViewItem();
-            list.Text = prof.IDNum1;
-            list.SubItems.Add(prof.Lname);
-            list.SubItems.Add(prof.Fname);
-            list.SubItems.Add(Convert.ToString(prof.Absences));
-            list.SubItems.Add(Convert.ToString(prof.Lates));
-            list.SubItems.Add(Convert.ToString(prof.Leaves));
-            listView1.Items.Add(list); 
-
-             for (int row = 0; row<dt.Rows.Count; row++)
-             {
-                 for (int col = 0; col<dt.Columns.Count; col++)
-                 {
-                     if (dt.Rows[row][col].ToString() == "" )
-                         Console.WriteLine("NULL");
-                     else
-                     Console.WriteLine(dt.Rows[row][col].ToString());
-                 }
-                 Console.WriteLine();
-             }
-             Console.ReadKey();*/
     }
 }
+
+
+
+
+
+
+/*// console app version
+
+ListViewItem list = new ListViewItem();
+    list.Text = prof.IDNum1;
+    list.SubItems.Add(prof.Lname);
+    list.SubItems.Add(prof.Fname);
+    list.SubItems.Add(Convert.ToString(prof.Absences));
+    list.SubItems.Add(Convert.ToString(prof.Lates));
+    list.SubItems.Add(Convert.ToString(prof.Leaves));
+    listView1.Items.Add(list); 
+
+     for (int row = 0; row<dt.Rows.Count; row++)
+     {
+         for (int col = 0; col<dt.Columns.Count; col++)
+         {
+             if (dt.Rows[row][col].ToString() == "" )
+                 Console.WriteLine("NULL");
+             else
+             Console.WriteLine(dt.Rows[row][col].ToString());
+         }
+         Console.WriteLine();
+     }
+     Console.ReadKey();*/

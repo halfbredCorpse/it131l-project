@@ -17,12 +17,14 @@ namespace WritingDataToSQL
         SqlCommand cmd;
         SqlConnection con;
         Form2 frm2 = new Form2();
+        Form3 frm3 = new Form3();
        // SqlDataAdapter da;
 
         public Form1()
         {
             InitializeComponent();
             frm2.Show();
+            frm3.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)// add a new record to database
@@ -47,13 +49,20 @@ namespace WritingDataToSQL
            "\nGender: " +
            comboBox1.SelectedItem.ToString());
 
-            frm2.Update();
+            textBox1.ResetText();
+            textBox2.ResetText();
+            comboBox1.ResetText();
+
+            frm3.lv.Items.Clear();
+            frm3.Update();
         }
 
         private void button2_Click(object sender, EventArgs e)//command to display the whole database
         {
-            
+            frm2.listView1.Items.Clear();
             frm2.Update();
+            frm3.lv.Items.Clear();
+            frm3.Update();
         }
     }
 }
