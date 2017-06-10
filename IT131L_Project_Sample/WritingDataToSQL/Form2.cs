@@ -21,7 +21,7 @@ namespace WritingDataToSQL
         }
         public new void Update()// display the database
         {
-
+            listView1.Items.Clear();
             SqlConnection con = new SqlConnection
               ("Data Source=ERIOLH;Initial Catalog=Company1;Integrated Security=True;");
             SqlDataAdapter sda = new SqlDataAdapter("select *from Employees", con);

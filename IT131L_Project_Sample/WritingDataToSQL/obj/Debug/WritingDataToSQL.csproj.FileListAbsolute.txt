@@ -19,3 +19,14 @@ C:\Users\Raphael Briones\Source\Repos\it131l-project\IT131L_Project_Sample\Writi
 C:\Users\Raphael Briones\Source\Repos\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Properties.Resources.resources
 C:\Users\Raphael Briones\Source\Repos\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.csproj.GenerateResource.Cache
 C:\Users\Raphael Briones\Source\Repos\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Form3.resources
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\bin\Debug\WritingDataToSQL.exe.config
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.exe
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.pdb
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\bin\Debug\WritingDataToSQL.exe
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\bin\Debug\WritingDataToSQL.pdb
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.csprojResolveAssemblyReference.cache
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Form1.resources
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Form2.resources
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Form3.resources
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Properties.Resources.resources
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.csproj.GenerateResource.Cache

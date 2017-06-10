@@ -42,6 +42,7 @@ namespace WritingDataToSQL
         }
         public new void Update()
         {
+            lv.Items.Clear();
             lv.BeginUpdate();
 
             this.AutoSize = true;

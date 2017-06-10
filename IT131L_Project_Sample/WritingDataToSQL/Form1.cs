@@ -53,15 +53,13 @@ namespace WritingDataToSQL
             textBox2.ResetText();
             comboBox1.ResetText();
 
-            frm3.lv.Items.Clear();
+            
             frm3.Update();
         }
 
         private void button2_Click(object sender, EventArgs e)//command to display the whole database
         {
-            frm2.listView1.Items.Clear();
             frm2.Update();
-            frm3.lv.Items.Clear();
             frm3.Update();
         }
     }
