@@ -16,6 +16,7 @@ namespace WritingDataToSQL
         public ListView lv = new ListView();
         ListViewItem lvi = new ListViewItem();
 
+
         public Form3()
         {
             InitializeComponent();
@@ -60,16 +61,17 @@ namespace WritingDataToSQL
             {
                 for (int col = 0; col < dt.Columns.Count; col++)
                 {
-                    if (col == 0)
-                        lvi = new ListViewItem(dt.Rows[row][col].ToString());
-
-                    else if (col > 0)
+                    if (col > 0)
                     {
                         if (dt.Rows[row][col].ToString() == "")
                             lvi.SubItems.Add("NULL");
+                        
                         else
                             lvi.SubItems.Add(dt.Rows[row][col].ToString());
                     }
+                    else                 
+                        lvi = new ListViewItem(dt.Rows[row][col].ToString());
+                    
                 }
                 lv.Items.Add(lvi);
             }

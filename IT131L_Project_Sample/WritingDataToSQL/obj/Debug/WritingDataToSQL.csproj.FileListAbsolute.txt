@@ -30,3 +30,4 @@ C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\W
 C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Form3.resources
 C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Properties.Resources.resources
 C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.csproj.GenerateResource.Cache
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project_Sample\WritingDataToSQL\obj\Debug\WritingDataToSQL.Form4.resources
