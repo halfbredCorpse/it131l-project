@@ -71,3 +71,6 @@ C:\Users\leesa\Desktop\it131l-project\IT131L_Project\frm_LogIN\obj\Debug\frm_Log
 C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\IT131L_Project\frm_LogIN\bin\Debug\frm_LogIN.exe.config
 C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.exe
 C:\Users\leesa\Documents\#School\Mapua_Y2T4\IT131L\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.pdb
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\frm_LogIN.exe.config
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.exe
+C:\Users\Raphael Briones\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.pdb
