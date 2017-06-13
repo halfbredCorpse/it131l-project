@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace frm_LogIN
@@ -24,6 +26,47 @@ namespace frm_LogIN
             mainMenu = (frm_MainMenu)Application.OpenForms[1];
 
             // Display all of the contents of Transaction_History for current user
+            try
+            {
+                ListViewItem lvi = new ListViewItem();
+                lst_TransactionHistory.Items.Clear();
+                lst_TransactionHistory.BeginUpdate();
+
+                SqlConnection con = new SqlConnection
+                 ("Data Source=(local);Initial Catalog=Project;Integrated Security=True;");
+                SqlDataAdapter sda = new SqlDataAdapter
+                    ("select *from Transaction_History where Account_Number = '" + user.AccountNumber + "'", con);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+
+                for (int row = 0; row < dt.Rows.Count; row++)
+                {
+                    for (int col = 0; col < dt.Columns.Count; col++)
+                    {
+                        if (col > 0)
+                        {
+                            if (dt.Rows[row][col].ToString() == "")
+                                lvi.SubItems.Add("NULL");
+
+                            else
+                                lvi.SubItems.Add(dt.Rows[row][col].ToString());
+                        }
+                        else
+                            lvi = new ListViewItem(dt.Rows[row][col].ToString());
+
+                    }
+                    lst_TransactionHistory.Items.Add(lvi);
+                }
+                lst_TransactionHistory.EndUpdate();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
+
+
             lbl_Balance.Text = user.Balance.ToString("0.00");
         }
 
