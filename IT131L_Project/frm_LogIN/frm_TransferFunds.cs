@@ -97,6 +97,19 @@ namespace frm_LogIN
                         cmd.Parameters.AddWithValue("@Account_Number", user.AccountNumber);
                         cmd.ExecuteNonQuery();
 
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", con);
+                        cmd.Parameters.AddWithValue("@Transaction_Type", "Transfer Funds");
+                        cmd.Parameters.AddWithValue("@Amount", transferAmount);
+                        date1 = DateTime.Today.ToString();
+                        cmd.Parameters.AddWithValue("@Date_Time", date1);
+                        cmd.Parameters.AddWithValue("@Account_Number", txt_ReceiverAccountNumber.Text);
+                        cmd.ExecuteNonQuery();
+
+
 
                         MessageBox.Show("You have successfully transferred PHP " + transferAmount.ToString("0.00") +
                             "!", "Successful Transfer");
