@@ -11,7 +11,7 @@ namespace frm_LogIN
         frm_MainMenu mainMenu;
         Account user;
         string accountNumber, pin;
-        SqlConnection con;
+        SqlConnection connection;
         string query;
         SqlDataAdapter sda;
         DataTable dtbl;
@@ -32,12 +32,12 @@ namespace frm_LogIN
             }
             try
             {
-                accountNumber = txt_AccountNumber.Text.Trim();
-                pin = txt_Pin.Text.Trim();
+                accountNumber = txt_AccountNumber.Text;
+                pin = txt_Pin.Text;
 
-                con = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=Project;Integrated Security=True"); // put Connection String
+                connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Project;Integrated Security=True"); // put Connection String
                 query = "SELECT * FROM Bank_Account where Account_Number = '" + accountNumber + "' AND PIN = '" + pin + "'";
-                sda = new SqlDataAdapter(query, con);
+                sda = new SqlDataAdapter(query, connection);
                 dtbl = new DataTable();
                 sda.Fill(dtbl);
                 selected = dtbl.Select();
@@ -45,10 +45,10 @@ namespace frm_LogIN
                 if (dtbl.Rows.Count == 1)
                 {
                     foreach (DataRow row in selected)
-                        user = new Account(row["Last_Name"].ToString(), row["First_Name"].ToString(), double.Parse(row["Balance"].ToString()), int.Parse(row["PIN"].ToString()), int.Parse(row["Account_Number"].ToString()), new List<Transaction_History>());
+                        user = new Account(row["Last_Name"].ToString(), row["First_Name"].ToString(), double.Parse(row["Balance"].ToString()), row["PIN"].ToString(), int.Parse(row["Account_Number"].ToString()), new List<Transaction_History>());
 
                     MessageBox.Show("You have successfully logged in.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    mainMenu = new frm_MainMenu(user);
+                    mainMenu = new frm_MainMenu(user, connection);
                     mainMenu.Show();
                 }
                 else
@@ -57,9 +57,10 @@ namespace frm_LogIN
                     MessageBox.Show("Your Account Number or PIN is incorrect.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                    txt_AccountNumber.Clear();
-                    txt_Pin.Clear();
-                
+                txt_AccountNumber.Clear();
+                txt_Pin.Clear();
+
+                dtbl.Clear();
             }
             catch (Exception ex)
             {

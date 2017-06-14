@@ -41,13 +41,14 @@
             // lst_TransactionHistory
             // 
             this.lst_TransactionHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.col_Date,
             this.col_TransactionNumber,
             this.col_TransactionType,
-            this.col_TransactionAmount});
-            this.lst_TransactionHistory.Location = new System.Drawing.Point(12, 12);
+            this.col_TransactionAmount,
+            this.col_Date});
+            this.lst_TransactionHistory.Location = new System.Drawing.Point(16, 15);
+            this.lst_TransactionHistory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lst_TransactionHistory.Name = "lst_TransactionHistory";
-            this.lst_TransactionHistory.Size = new System.Drawing.Size(624, 222);
+            this.lst_TransactionHistory.Size = new System.Drawing.Size(831, 272);
             this.lst_TransactionHistory.TabIndex = 4;
             this.lst_TransactionHistory.UseCompatibleStateImageBehavior = false;
             this.lst_TransactionHistory.View = System.Windows.Forms.View.Details;
@@ -76,9 +77,10 @@
             // 
             this.lbl_Balance.AutoSize = true;
             this.lbl_Balance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Balance.Location = new System.Drawing.Point(203, 237);
+            this.lbl_Balance.Location = new System.Drawing.Point(271, 292);
+            this.lbl_Balance.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Balance.Name = "lbl_Balance";
-            this.lbl_Balance.Size = new System.Drawing.Size(44, 20);
+            this.lbl_Balance.Size = new System.Drawing.Size(54, 25);
             this.lbl_Balance.TabIndex = 7;
             this.lbl_Balance.Text = "0.00";
             // 
@@ -86,18 +88,20 @@
             // 
             this.lbl_BalanceLabel.AutoSize = true;
             this.lbl_BalanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_BalanceLabel.Location = new System.Drawing.Point(8, 237);
+            this.lbl_BalanceLabel.Location = new System.Drawing.Point(11, 292);
+            this.lbl_BalanceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_BalanceLabel.Name = "lbl_BalanceLabel";
-            this.lbl_BalanceLabel.Size = new System.Drawing.Size(189, 20);
+            this.lbl_BalanceLabel.Size = new System.Drawing.Size(230, 25);
             this.lbl_BalanceLabel.TabIndex = 6;
             this.lbl_BalanceLabel.Text = "Current Balance: PHP ";
             // 
             // btn_OK
             // 
             this.btn_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_OK.Location = new System.Drawing.Point(235, 260);
+            this.btn_OK.Location = new System.Drawing.Point(313, 320);
+            this.btn_OK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_OK.Name = "btn_OK";
-            this.btn_OK.Size = new System.Drawing.Size(170, 23);
+            this.btn_OK.Size = new System.Drawing.Size(227, 28);
             this.btn_OK.TabIndex = 5;
             this.btn_OK.Text = "OK";
             this.btn_OK.UseVisualStyleBackColor = true;
@@ -105,17 +109,18 @@
             // 
             // frm_BalanceInquiry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 293);
+            this.ClientSize = new System.Drawing.Size(861, 351);
             this.Controls.Add(this.lst_TransactionHistory);
             this.Controls.Add(this.lbl_Balance);
             this.Controls.Add(this.lbl_BalanceLabel);
             this.Controls.Add(this.btn_OK);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(664, 332);
+            this.MaximumSize = new System.Drawing.Size(879, 398);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(664, 332);
+            this.MinimumSize = new System.Drawing.Size(879, 398);
             this.Name = "frm_BalanceInquiry";
             this.Text = "Banks Banking - Balance Inquiry";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_BalanceInquiry_FormClosing);

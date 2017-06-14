@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace frm_LogIN
@@ -11,16 +12,18 @@ namespace frm_LogIN
         frm_TransferFunds transferFunds;
         frm_DepositMoney depositMoney;
         Account user;
+        SqlConnection connection;
 
         public frm_MainMenu()
         {
             InitializeComponent();
         }
 
-        public frm_MainMenu(Account user)
+        public frm_MainMenu(Account user, SqlConnection connection)
         {
             InitializeComponent();
             this.user = user;
+            this.connection = connection;
         }
     
         private void frm_MainMenu_Load(object sender, EventArgs e)
@@ -33,14 +36,14 @@ namespace frm_LogIN
 
         private void btn_BalanceInquiry_Click(object sender, EventArgs e)
         {
-            balanceInquiry = new frm_BalanceInquiry(user);
+            balanceInquiry = new frm_BalanceInquiry(user, connection);
             balanceInquiry.Show();
             Hide();
         }
 
         private void btn_WitdhrawMoney_Click(object sender, EventArgs e)
         {
-            withdrawMoney = new frm_WithdrawMoney(user);
+            withdrawMoney = new frm_WithdrawMoney(user, connection);
             withdrawMoney.Show();
             Hide();
         }
@@ -54,7 +57,7 @@ namespace frm_LogIN
 
         private void btn_DepositMoney_Click(object sender, EventArgs e)
         {
-            depositMoney = new frm_DepositMoney(user);
+            depositMoney = new frm_DepositMoney(user,connection);
             depositMoney.Show();
             Hide();
         }
