@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace frm_LogIN
@@ -8,6 +9,9 @@ namespace frm_LogIN
         frm_MainMenu mainMenu;
         Account user;
         double withdrawAmount;
+
+        SqlCommand cmd;
+        SqlConnection con;
 
         public frm_WithdrawMoney()
         {
@@ -55,6 +59,29 @@ namespace frm_LogIN
                     else
                     {
                         user.WithdrawMoney(withdrawAmount);
+
+                        // deducting withdrawmoney to balance
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("Update Bank_Account Set Balance = Balance -" + withdrawAmount + "where Account_Number = '"
+                            + user.AccountNumber + "'", con);
+                        cmd.ExecuteNonQuery();
+
+                        //Adding into transaction_history
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", con);
+                        cmd.Parameters.AddWithValue("@Transaction_Type", "Withdrawal");
+                        cmd.Parameters.AddWithValue("@Amount", withdrawAmount);
+                        string date1 = DateTime.Today.ToString();
+                        cmd.Parameters.AddWithValue("@Date_Time", date1);
+                        cmd.Parameters.AddWithValue("@Account_Number", user.AccountNumber);
+                        cmd.ExecuteNonQuery();
+
                         MessageBox.Show("You have successfully withdrawn PHP " + withdrawAmount.ToString("0.00") +
                             "!", "Successful Withdrawal");
                     }

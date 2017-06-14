@@ -35,7 +35,7 @@ namespace frm_LogIN
                 accountNumber = txt_AccountNumber.Text.Trim();
                 pin = txt_Pin.Text.Trim();
 
-                con = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=Project;Integrated Security=True"); // put Connection String
+                con = new SqlConnection("Data Source=(local);Initial Catalog=Project;Integrated Security=True"); // put Connection String
                 query = "SELECT * FROM Bank_Account where Account_Number = '" + accountNumber + "' AND PIN = '" + pin + "'";
                 sda = new SqlDataAdapter(query, con);
                 dtbl = new DataTable();

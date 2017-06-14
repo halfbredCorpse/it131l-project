@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace frm_LogIN
@@ -9,6 +10,9 @@ namespace frm_LogIN
         frm_MainMenu mainMenu;
         Account user, receiver;
         double transferAmount;
+
+        SqlCommand cmd;
+        SqlConnection con;
 
         //Temporary variables to be replaced by SQL variables
         string r_lastName, r_firstName;
@@ -61,6 +65,52 @@ namespace frm_LogIN
                     else
                     {
                         user.TransferFunds(transferAmount, receiver);
+
+                        //code for user
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("Update Bank_Account Set Balance = Balance -" + transferAmount + "where Account_Number = '"
+                            + user.AccountNumber + "'", con);
+                        cmd.ExecuteNonQuery();
+                        
+                        //code for receiver
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("Update Bank_Account Set Balance = Balance +" + transferAmount + "where Account_Number = '"
+                            + txt_ReceiverAccountNumber.Text + "'", con);
+                        cmd.ExecuteNonQuery();
+
+                        //Adding into transaction_history
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", con);
+                        cmd.Parameters.AddWithValue("@Transaction_Type", "Transfer Funds");
+                        cmd.Parameters.AddWithValue("@Amount", transferAmount);
+                        string date1 = DateTime.Today.ToString();
+                        cmd.Parameters.AddWithValue("@Date_Time", date1);
+                        cmd.Parameters.AddWithValue("@Account_Number", user.AccountNumber);
+                        cmd.ExecuteNonQuery();
+
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", con);
+                        cmd.Parameters.AddWithValue("@Transaction_Type", "Transfer Funds");
+                        cmd.Parameters.AddWithValue("@Amount", transferAmount);
+                        date1 = DateTime.Today.ToString();
+                        cmd.Parameters.AddWithValue("@Date_Time", date1);
+                        cmd.Parameters.AddWithValue("@Account_Number", txt_ReceiverAccountNumber.Text);
+                        cmd.ExecuteNonQuery();
+
+
+
                         MessageBox.Show("You have successfully transferred PHP " + transferAmount.ToString("0.00") +
                             "!", "Successful Transfer");
                     }
