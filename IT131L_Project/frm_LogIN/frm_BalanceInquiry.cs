@@ -47,7 +47,6 @@ namespace frm_LogIN
                         {
                             if (dt.Rows[row][col].ToString() == "")
                                 lvi.SubItems.Add("NULL");
-
                             else
                                 lvi.SubItems.Add(dt.Rows[row][col].ToString());
                         }

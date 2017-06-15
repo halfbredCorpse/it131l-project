@@ -16,6 +16,7 @@ namespace frm_LogIN
         SqlDataAdapter sda;
         DataTable dtbl;
         DataRow[] selected;
+        int loginAttempts;
 
         public frm_Login()
         {
@@ -53,8 +54,14 @@ namespace frm_LogIN
                 }
                 else
                 {
-
+                    loginAttempts++;
                     MessageBox.Show("Your Account Number or PIN is incorrect.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (loginAttempts == 3)
+                    {
+                        MessageBox.Show("You have exceeded the number of allowed login attempts. \nPlease try again later.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Application.Exit();
+                    }
                 }
 
                 txt_AccountNumber.Clear();

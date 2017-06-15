@@ -50,7 +50,7 @@ namespace frm_LogIN
         
         private void btn_TransferFunds_Click(object sender, EventArgs e)
         {
-            transferFunds = new frm_TransferFunds(user);
+            transferFunds = new frm_TransferFunds(user,connection);
             transferFunds.Show();
             Hide();
         }
