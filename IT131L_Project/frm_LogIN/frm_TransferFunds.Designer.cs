@@ -50,6 +50,7 @@
             // txt_ReceiverAccountNumber
             // 
             this.txt_ReceiverAccountNumber.Location = new System.Drawing.Point(172, 40);
+            this.txt_ReceiverAccountNumber.MaxLength = 8;
             this.txt_ReceiverAccountNumber.Name = "txt_ReceiverAccountNumber";
             this.txt_ReceiverAccountNumber.Size = new System.Drawing.Size(182, 20);
             this.txt_ReceiverAccountNumber.TabIndex = 1;

@@ -4,9 +4,9 @@ namespace frm_LogIN
 {
     public class Account
     {
-        string last_name, first_name;
+        string last_name, first_name, pin;
         double balance;
-        int pin, accountNumber;
+        int accountNumber;
         List<Transaction_History> transaction_history;
 
         public string Last_Name
@@ -25,7 +25,7 @@ namespace frm_LogIN
             set { balance = value; }
         }
 
-        public int Pin
+        public string Pin
         {
             get { return pin; }
         }
@@ -41,7 +41,7 @@ namespace frm_LogIN
             set { transaction_history = value; }
         }
 
-        public Account(string last_name, string first_name, double balance, int pin, int accountNumber,
+        public Account(string last_name, string first_name, double balance, string pin, int accountNumber,
             List<Transaction_History> transaction_history)
         {
             this.last_name = last_name;

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.lst_TransactionHistory = new System.Windows.Forms.ListView();
-            this.col_Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_TransactionNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_TransactionType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_TransactionAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col_Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lbl_Balance = new System.Windows.Forms.Label();
             this.lbl_BalanceLabel = new System.Windows.Forms.Label();
             this.btn_OK = new System.Windows.Forms.Button();
@@ -41,21 +41,16 @@
             // lst_TransactionHistory
             // 
             this.lst_TransactionHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.col_Date,
             this.col_TransactionNumber,
             this.col_TransactionType,
-            this.col_TransactionAmount});
+            this.col_TransactionAmount,
+            this.col_Date});
             this.lst_TransactionHistory.Location = new System.Drawing.Point(12, 12);
             this.lst_TransactionHistory.Name = "lst_TransactionHistory";
-            this.lst_TransactionHistory.Size = new System.Drawing.Size(624, 222);
+            this.lst_TransactionHistory.Size = new System.Drawing.Size(673, 222);
             this.lst_TransactionHistory.TabIndex = 4;
             this.lst_TransactionHistory.UseCompatibleStateImageBehavior = false;
             this.lst_TransactionHistory.View = System.Windows.Forms.View.Details;
-            // 
-            // col_Date
-            // 
-            this.col_Date.Text = "Date";
-            this.col_Date.Width = 101;
             // 
             // col_TransactionNumber
             // 
@@ -71,6 +66,11 @@
             // 
             this.col_TransactionAmount.Text = "Amount";
             this.col_TransactionAmount.Width = 148;
+            // 
+            // col_Date
+            // 
+            this.col_Date.Text = "Date";
+            this.col_Date.Width = 151;
             // 
             // lbl_Balance
             // 
@@ -107,15 +107,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 293);
+            this.ClientSize = new System.Drawing.Size(697, 292);
             this.Controls.Add(this.lst_TransactionHistory);
             this.Controls.Add(this.lbl_Balance);
             this.Controls.Add(this.lbl_BalanceLabel);
             this.Controls.Add(this.btn_OK);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(664, 332);
+            this.MaximumSize = new System.Drawing.Size(713, 331);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(664, 332);
+            this.MinimumSize = new System.Drawing.Size(713, 331);
             this.Name = "frm_BalanceInquiry";
             this.Text = "Banks Banking - Balance Inquiry";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_BalanceInquiry_FormClosing);

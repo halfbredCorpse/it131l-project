@@ -90,29 +90,29 @@
             // lbl_Welcome
             // 
             this.lbl_Welcome.AutoSize = true;
-            this.lbl_Welcome.Location = new System.Drawing.Point(106, 9);
+            this.lbl_Welcome.Location = new System.Drawing.Point(115, 6);
             this.lbl_Welcome.Name = "lbl_Welcome";
-            this.lbl_Welcome.Size = new System.Drawing.Size(58, 13);
+            this.lbl_Welcome.Size = new System.Drawing.Size(52, 13);
             this.lbl_Welcome.TabIndex = 5;
-            this.lbl_Welcome.Text = "Welcome, ";
+            this.lbl_Welcome.Text = "Welcome";
             // 
             // lbl_FullName
             // 
-            this.lbl_FullName.AutoSize = true;
             this.lbl_FullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FullName.Location = new System.Drawing.Point(47, 22);
+            this.lbl_FullName.Location = new System.Drawing.Point(47, 19);
             this.lbl_FullName.Name = "lbl_FullName";
-            this.lbl_FullName.Size = new System.Drawing.Size(193, 15);
+            this.lbl_FullName.Size = new System.Drawing.Size(193, 22);
             this.lbl_FullName.TabIndex = 6;
             this.lbl_FullName.Text = "LASTNAME, FIRSTNAME M.I.";
+            this.lbl_FullName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frm_MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 216);
-            this.Controls.Add(this.lbl_FullName);
             this.Controls.Add(this.lbl_Welcome);
+            this.Controls.Add(this.lbl_FullName);
             this.Controls.Add(this.btn_LogOut);
             this.Controls.Add(this.btn_DepositMoney);
             this.Controls.Add(this.btn_TransferFunds);
