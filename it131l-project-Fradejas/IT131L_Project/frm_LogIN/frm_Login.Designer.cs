@@ -73,6 +73,7 @@
             this.txt_Pin.PasswordChar = '*';
             this.txt_Pin.Size = new System.Drawing.Size(160, 20);
             this.txt_Pin.TabIndex = 8;
+            this.txt_Pin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Pin_KeyDown);
             // 
             // txt_AccountNumber
             // 
@@ -81,6 +82,7 @@
             this.txt_AccountNumber.Name = "txt_AccountNumber";
             this.txt_AccountNumber.Size = new System.Drawing.Size(160, 20);
             this.txt_AccountNumber.TabIndex = 7;
+            this.txt_AccountNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_AccountNumber_KeyDown);
             // 
             // lbl_AccountNumber
             // 

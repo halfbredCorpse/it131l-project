@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace frm_LogIN
@@ -9,15 +10,19 @@ namespace frm_LogIN
         Account user;
         double withdrawAmount;
 
+        SqlCommand cmd;
+        SqlConnection connection;
+
         public frm_WithdrawMoney()
         {
             InitializeComponent();
         }
 
-        public frm_WithdrawMoney(Account user)
+        public frm_WithdrawMoney(Account user, SqlConnection connection)
         {
             InitializeComponent();
             this.user = user;
+            this.connection = connection;
         }
 
         private void frm_WithdrawMoney_Load(object sender, EventArgs e)
@@ -30,7 +35,7 @@ namespace frm_LogIN
             DialogResult dialog = MessageBox.Show("Are you sure you want to cancel your withdrawal?", "Exiting", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
-                mainMenu.Enabled = true;
+                mainMenu.Show();
             else
                 e.Cancel = true;
         }
@@ -55,6 +60,26 @@ namespace frm_LogIN
                     else
                     {
                         user.WithdrawMoney(withdrawAmount);
+
+                        // deducting withdrawmoney to balance
+                        connection.Open();
+                        cmd = new SqlCommand
+                            ("Update Bank_Account Set Balance = Balance -" + withdrawAmount + "where Account_Number = '"
+                            + user.AccountNumber + "'", connection);
+                        cmd.ExecuteNonQuery();
+
+                        //Adding into transaction_history
+                        cmd = new SqlCommand
+                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        cmd.Parameters.AddWithValue("@Transaction_Type", "Withdrawal");
+                        cmd.Parameters.AddWithValue("@Amount", withdrawAmount);
+                        DateTime date1 = DateTime.Now;
+                        cmd.Parameters.AddWithValue("@Date_Time", date1);
+                        cmd.Parameters.AddWithValue("@Account_Number", user.AccountNumber);
+                        cmd.ExecuteNonQuery();
+
+                        connection.Close();
+
                         MessageBox.Show("You have successfully withdrawn PHP " + withdrawAmount.ToString("0.00") +
                             "!", "Successful Withdrawal");
                     }
