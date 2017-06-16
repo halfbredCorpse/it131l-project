@@ -98,7 +98,7 @@
             this.btn_Withdraw.Name = "btn_Withdraw";
             this.btn_Withdraw.Size = new System.Drawing.Size(122, 37);
             this.btn_Withdraw.TabIndex = 4;
-            this.btn_Withdraw.Text = "Withdraw";
+            this.btn_Withdraw.Text = "WITHDRAW";
             this.btn_Withdraw.UseVisualStyleBackColor = true;
             this.btn_Withdraw.Click += new System.EventHandler(this.btn_Withdraw_Click);
             // 
@@ -109,7 +109,7 @@
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(125, 37);
             this.btn_Cancel.TabIndex = 5;
-            this.btn_Cancel.Text = "Return";
+            this.btn_Cancel.Text = "RETURN";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 

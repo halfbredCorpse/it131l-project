@@ -57,7 +57,7 @@
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(125, 37);
             this.btn_Cancel.TabIndex = 11;
-            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.Text = "RETURN";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
@@ -70,7 +70,7 @@
             this.btn_Deposit.Name = "btn_Deposit";
             this.btn_Deposit.Size = new System.Drawing.Size(122, 37);
             this.btn_Deposit.TabIndex = 10;
-            this.btn_Deposit.Text = "Deposit";
+            this.btn_Deposit.Text = "DEPOSIT";
             this.btn_Deposit.UseVisualStyleBackColor = true;
             this.btn_Deposit.Click += new System.EventHandler(this.btn_Deposit_Click);
             // 
