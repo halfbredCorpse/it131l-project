@@ -127,3 +127,31 @@ C:\Users\arist\Documents\GitHub\it131l-project\IT131L_Project\IT131L_Project\frm
 C:\Users\arist\Documents\GitHub\it131l-project\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIn.csproj.GenerateResource.Cache
 C:\Users\arist\Documents\GitHub\it131l-project\IT131L_Project\IT131L_Project\frm_LogIN\bin\Debug\frm_LogIN.exe
 C:\Users\arist\Documents\GitHub\it131l-project\IT131L_Project\IT131L_Project\frm_LogIN\bin\Debug\frm_LogIN.pdb
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\bin\Debug\frm_LogIN.exe.config
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.exe
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.pdb
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\bin\Debug\frm_LogIN.exe
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\bin\Debug\frm_LogIN.pdb
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIn.csprojResolveAssemblyReference.cache
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_BalanceInquiry.resources
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_DepositMoney.resources
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_Login.resources
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_MainMenu.resources
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_TransferFunds.resources
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_WithdrawMoney.resources
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.Properties.Resources.resources
+C:\Users\arist\Downloads\it131l-project-Fradejas\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIn.csproj.GenerateResource.Cache
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\bin\Debug\frm_LogIN.exe.config
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.exe
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.pdb
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\bin\Debug\frm_LogIN.exe
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\bin\Debug\frm_LogIN.pdb
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIn.csprojResolveAssemblyReference.cache
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_BalanceInquiry.resources
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_DepositMoney.resources
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_Login.resources
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_MainMenu.resources
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_TransferFunds.resources
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_WithdrawMoney.resources
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.Properties.Resources.resources
+C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIn.csproj.GenerateResource.Cache

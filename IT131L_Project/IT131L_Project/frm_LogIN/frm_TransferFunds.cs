@@ -39,6 +39,9 @@ namespace frm_LogIN
         private void frm_TransferFunds_Load(object sender, EventArgs e)
         {
             mainMenu = (frm_MainMenu)Application.OpenForms[1];
+            lblCurrentDate.Text = System.DateTime.Now.ToString("D");
+            lblCurrentTime.Text = System.DateTime.Now.ToString("T");
+
         }
 
         private void btn_Transfer_Click(object sender, EventArgs e)
@@ -92,7 +95,7 @@ namespace frm_LogIN
                             ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", con);
                         cmd.Parameters.AddWithValue("@Transaction_Type", "Transfer Funds");
                         cmd.Parameters.AddWithValue("@Amount", transferAmount);
-                        string date1 = DateTime.Today.ToString();
+                        string date1 = DateTime.Now.ToString();
                         cmd.Parameters.AddWithValue("@Date_Time", date1);
                         cmd.Parameters.AddWithValue("@Account_Number", user.AccountNumber);
                         cmd.ExecuteNonQuery();
@@ -104,7 +107,7 @@ namespace frm_LogIN
                             ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", con);
                         cmd.Parameters.AddWithValue("@Transaction_Type", "Transfer Funds");
                         cmd.Parameters.AddWithValue("@Amount", transferAmount);
-                        date1 = DateTime.Today.ToString();
+                        date1 = DateTime.Now.ToString();
                         cmd.Parameters.AddWithValue("@Date_Time", date1);
                         cmd.Parameters.AddWithValue("@Account_Number", txt_ReceiverAccountNumber.Text);
                         cmd.ExecuteNonQuery();
@@ -113,6 +116,7 @@ namespace frm_LogIN
 
                         MessageBox.Show("You have successfully transferred PHP " + transferAmount.ToString("0.00") +
                             "!", "Successful Transfer");
+                        btn_Cancel.Select();
                     }
                 }
             }
@@ -122,8 +126,8 @@ namespace frm_LogIN
 
         private void frm_TransferFunds_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel transfer of funds?", 
-                "Exiting", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel transfer of funds and return to Main Menu?", 
+                "Exiting...", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
                 mainMenu.Show();

@@ -56,6 +56,7 @@ namespace frm_LogIN
                 {
                     loginAttempts++;
                     MessageBox.Show("Your Account Number or PIN is incorrect.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txt_AccountNumber.Select();
 
                     if (loginAttempts == 3)
                     {
