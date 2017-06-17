@@ -37,6 +37,24 @@ namespace frm_LogIN
             Close();
         }
 
+        private void txt_TransferAmount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btn_Transfer_Click(sender, e);
+        }
+
+        private void txt_ReceiverAccountNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btn_Transfer_Click(sender, e);
+        }
+
+        private void txt_Pin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btn_Transfer_Click(sender, e);
+        }
+
         private void frm_TransferFunds_Load(object sender, EventArgs e)
         {
             mainMenu = (frm_MainMenu)Application.OpenForms[1];

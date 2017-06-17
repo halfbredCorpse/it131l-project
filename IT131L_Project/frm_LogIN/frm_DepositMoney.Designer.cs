@@ -38,9 +38,10 @@
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(152, 63);
+            this.btn_Cancel.Location = new System.Drawing.Point(203, 78);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(125, 23);
+            this.btn_Cancel.Size = new System.Drawing.Size(167, 28);
             this.btn_Cancel.TabIndex = 11;
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.UseVisualStyleBackColor = true;
@@ -48,11 +49,12 @@
             // 
             // btn_Deposit
             // 
-            this.btn_Deposit.Location = new System.Drawing.Point(24, 63);
-            this.btn_Deposit.MaximumSize = new System.Drawing.Size(122, 23);
-            this.btn_Deposit.MinimumSize = new System.Drawing.Size(122, 23);
+            this.btn_Deposit.Location = new System.Drawing.Point(32, 78);
+            this.btn_Deposit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Deposit.MaximumSize = new System.Drawing.Size(163, 28);
+            this.btn_Deposit.MinimumSize = new System.Drawing.Size(163, 28);
             this.btn_Deposit.Name = "btn_Deposit";
-            this.btn_Deposit.Size = new System.Drawing.Size(122, 23);
+            this.btn_Deposit.Size = new System.Drawing.Size(163, 28);
             this.btn_Deposit.TabIndex = 10;
             this.btn_Deposit.Text = "Deposit";
             this.btn_Deposit.UseVisualStyleBackColor = true;
@@ -61,50 +63,57 @@
             // lbl_Pin
             // 
             this.lbl_Pin.AutoSize = true;
-            this.lbl_Pin.Location = new System.Drawing.Point(71, 41);
+            this.lbl_Pin.Location = new System.Drawing.Point(95, 50);
+            this.lbl_Pin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Pin.Name = "lbl_Pin";
-            this.lbl_Pin.Size = new System.Drawing.Size(56, 13);
+            this.lbl_Pin.Size = new System.Drawing.Size(72, 17);
             this.lbl_Pin.TabIndex = 9;
             this.lbl_Pin.Text = "Your PIN: ";
             // 
             // lbl_DepositMessage
             // 
             this.lbl_DepositMessage.AutoSize = true;
-            this.lbl_DepositMessage.Location = new System.Drawing.Point(29, 15);
+            this.lbl_DepositMessage.Location = new System.Drawing.Point(39, 18);
+            this.lbl_DepositMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_DepositMessage.Name = "lbl_DepositMessage";
-            this.lbl_DepositMessage.Size = new System.Drawing.Size(98, 13);
+            this.lbl_DepositMessage.Size = new System.Drawing.Size(130, 17);
             this.lbl_DepositMessage.TabIndex = 8;
             this.lbl_DepositMessage.Text = "Amount to deposit: ";
             // 
             // txt_Pin
             // 
-            this.txt_Pin.Location = new System.Drawing.Point(133, 38);
+            this.txt_Pin.Location = new System.Drawing.Point(177, 47);
+            this.txt_Pin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_Pin.MaxLength = 6;
             this.txt_Pin.Name = "txt_Pin";
             this.txt_Pin.PasswordChar = '*';
-            this.txt_Pin.Size = new System.Drawing.Size(144, 20);
+            this.txt_Pin.Size = new System.Drawing.Size(191, 22);
             this.txt_Pin.TabIndex = 7;
+            this.txt_Pin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Pin_KeyDown);
             // 
             // txt_DepositAmount
             // 
-            this.txt_DepositAmount.Location = new System.Drawing.Point(133, 12);
+            this.txt_DepositAmount.Location = new System.Drawing.Point(177, 15);
+            this.txt_DepositAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_DepositAmount.Name = "txt_DepositAmount";
-            this.txt_DepositAmount.Size = new System.Drawing.Size(144, 20);
+            this.txt_DepositAmount.Size = new System.Drawing.Size(191, 22);
             this.txt_DepositAmount.TabIndex = 6;
             this.txt_DepositAmount.Text = "0.00";
             this.txt_DepositAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_DepositAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_DepositAmount_KeyDown);
             // 
             // frm_DepositMoney
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 99);
+            this.ClientSize = new System.Drawing.Size(412, 122);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Deposit);
             this.Controls.Add(this.lbl_Pin);
             this.Controls.Add(this.lbl_DepositMessage);
             this.Controls.Add(this.txt_Pin);
             this.Controls.Add(this.txt_DepositAmount);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frm_DepositMoney";
             this.Text = "Banks Banking - Deposit Money";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_DepositMoney_FormClosing);

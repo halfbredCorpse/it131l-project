@@ -38,45 +38,52 @@
             // 
             // txt_WithdrawAmount
             // 
-            this.txt_WithdrawAmount.Location = new System.Drawing.Point(141, 12);
+            this.txt_WithdrawAmount.Location = new System.Drawing.Point(188, 15);
+            this.txt_WithdrawAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_WithdrawAmount.Name = "txt_WithdrawAmount";
-            this.txt_WithdrawAmount.Size = new System.Drawing.Size(144, 20);
+            this.txt_WithdrawAmount.Size = new System.Drawing.Size(191, 22);
             this.txt_WithdrawAmount.TabIndex = 0;
             this.txt_WithdrawAmount.Text = "0.00";
             this.txt_WithdrawAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_WithdrawAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_WithdrawAmount_KeyDown);
             // 
             // txt_Pin
             // 
-            this.txt_Pin.Location = new System.Drawing.Point(141, 38);
+            this.txt_Pin.Location = new System.Drawing.Point(188, 47);
+            this.txt_Pin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_Pin.MaxLength = 6;
             this.txt_Pin.Name = "txt_Pin";
             this.txt_Pin.PasswordChar = '*';
-            this.txt_Pin.Size = new System.Drawing.Size(144, 20);
+            this.txt_Pin.Size = new System.Drawing.Size(191, 22);
             this.txt_Pin.TabIndex = 1;
+            this.txt_Pin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Pin_KeyDown);
             // 
             // lbl_WithdrawMessage
             // 
             this.lbl_WithdrawMessage.AutoSize = true;
-            this.lbl_WithdrawMessage.Location = new System.Drawing.Point(29, 15);
+            this.lbl_WithdrawMessage.Location = new System.Drawing.Point(39, 18);
+            this.lbl_WithdrawMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_WithdrawMessage.Name = "lbl_WithdrawMessage";
-            this.lbl_WithdrawMessage.Size = new System.Drawing.Size(106, 13);
+            this.lbl_WithdrawMessage.Size = new System.Drawing.Size(138, 17);
             this.lbl_WithdrawMessage.TabIndex = 2;
             this.lbl_WithdrawMessage.Text = "Amount to withdraw: ";
             // 
             // lbl_Pin
             // 
             this.lbl_Pin.AutoSize = true;
-            this.lbl_Pin.Location = new System.Drawing.Point(79, 41);
+            this.lbl_Pin.Location = new System.Drawing.Point(105, 50);
+            this.lbl_Pin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Pin.Name = "lbl_Pin";
-            this.lbl_Pin.Size = new System.Drawing.Size(56, 13);
+            this.lbl_Pin.Size = new System.Drawing.Size(72, 17);
             this.lbl_Pin.TabIndex = 3;
             this.lbl_Pin.Text = "Your PIN: ";
             // 
             // btn_Withdraw
             // 
-            this.btn_Withdraw.Location = new System.Drawing.Point(32, 63);
+            this.btn_Withdraw.Location = new System.Drawing.Point(43, 78);
+            this.btn_Withdraw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Withdraw.Name = "btn_Withdraw";
-            this.btn_Withdraw.Size = new System.Drawing.Size(122, 23);
+            this.btn_Withdraw.Size = new System.Drawing.Size(163, 28);
             this.btn_Withdraw.TabIndex = 4;
             this.btn_Withdraw.Text = "Withdraw";
             this.btn_Withdraw.UseVisualStyleBackColor = true;
@@ -84,9 +91,10 @@
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(160, 63);
+            this.btn_Cancel.Location = new System.Drawing.Point(213, 78);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(125, 23);
+            this.btn_Cancel.Size = new System.Drawing.Size(167, 28);
             this.btn_Cancel.TabIndex = 5;
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.UseVisualStyleBackColor = true;
@@ -94,19 +102,20 @@
             // 
             // frm_WithdrawMoney
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(317, 98);
+            this.ClientSize = new System.Drawing.Size(420, 111);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Withdraw);
             this.Controls.Add(this.lbl_Pin);
             this.Controls.Add(this.lbl_WithdrawMessage);
             this.Controls.Add(this.txt_Pin);
             this.Controls.Add(this.txt_WithdrawAmount);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(333, 137);
+            this.MaximumSize = new System.Drawing.Size(438, 158);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(333, 137);
+            this.MinimumSize = new System.Drawing.Size(438, 158);
             this.Name = "frm_WithdrawMoney";
             this.Text = "Banks Banking - Withdraw Money";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_WithdrawMoney_FormClosing);

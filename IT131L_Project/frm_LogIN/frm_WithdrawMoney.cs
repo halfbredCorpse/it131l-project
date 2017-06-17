@@ -91,5 +91,17 @@ namespace frm_LogIN
             txt_WithdrawAmount.Text = "0.00";
             txt_Pin.Text = "";
         }
+
+        private void txt_WithdrawAmount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btn_Withdraw_Click(sender,e);
+        }
+
+        private void txt_Pin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btn_Withdraw_Click(sender, e);
+        }
     }
 }

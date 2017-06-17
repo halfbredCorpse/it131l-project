@@ -40,63 +40,73 @@
             // 
             // txt_TransferAmount
             // 
-            this.txt_TransferAmount.Location = new System.Drawing.Point(172, 13);
+            this.txt_TransferAmount.Location = new System.Drawing.Point(229, 16);
+            this.txt_TransferAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_TransferAmount.Name = "txt_TransferAmount";
-            this.txt_TransferAmount.Size = new System.Drawing.Size(182, 20);
+            this.txt_TransferAmount.Size = new System.Drawing.Size(241, 22);
             this.txt_TransferAmount.TabIndex = 0;
             this.txt_TransferAmount.Text = "0.00";
             this.txt_TransferAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_TransferAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_TransferAmount_KeyDown);
             // 
             // txt_ReceiverAccountNumber
             // 
-            this.txt_ReceiverAccountNumber.Location = new System.Drawing.Point(172, 40);
+            this.txt_ReceiverAccountNumber.Location = new System.Drawing.Point(229, 49);
+            this.txt_ReceiverAccountNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_ReceiverAccountNumber.MaxLength = 8;
             this.txt_ReceiverAccountNumber.Name = "txt_ReceiverAccountNumber";
-            this.txt_ReceiverAccountNumber.Size = new System.Drawing.Size(182, 20);
+            this.txt_ReceiverAccountNumber.Size = new System.Drawing.Size(241, 22);
             this.txt_ReceiverAccountNumber.TabIndex = 1;
             this.txt_ReceiverAccountNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_ReceiverAccountNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_ReceiverAccountNumber_KeyDown);
             // 
             // txt_Pin
             // 
-            this.txt_Pin.Location = new System.Drawing.Point(172, 66);
+            this.txt_Pin.Location = new System.Drawing.Point(229, 81);
+            this.txt_Pin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_Pin.MaxLength = 6;
             this.txt_Pin.Name = "txt_Pin";
             this.txt_Pin.PasswordChar = '*';
-            this.txt_Pin.Size = new System.Drawing.Size(106, 20);
+            this.txt_Pin.Size = new System.Drawing.Size(140, 22);
             this.txt_Pin.TabIndex = 2;
+            this.txt_Pin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Pin_KeyDown);
             // 
             // lbl_TransferLabel
             // 
             this.lbl_TransferLabel.AutoSize = true;
-            this.lbl_TransferLabel.Location = new System.Drawing.Point(67, 16);
+            this.lbl_TransferLabel.Location = new System.Drawing.Point(89, 20);
+            this.lbl_TransferLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TransferLabel.Name = "lbl_TransferLabel";
-            this.lbl_TransferLabel.Size = new System.Drawing.Size(99, 13);
+            this.lbl_TransferLabel.Size = new System.Drawing.Size(133, 17);
             this.lbl_TransferLabel.TabIndex = 3;
             this.lbl_TransferLabel.Text = "Amount to transfer: ";
             // 
             // lbl_ReceiverAccountNumber
             // 
             this.lbl_ReceiverAccountNumber.AutoSize = true;
-            this.lbl_ReceiverAccountNumber.Location = new System.Drawing.Point(20, 43);
+            this.lbl_ReceiverAccountNumber.Location = new System.Drawing.Point(27, 53);
+            this.lbl_ReceiverAccountNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_ReceiverAccountNumber.Name = "lbl_ReceiverAccountNumber";
-            this.lbl_ReceiverAccountNumber.Size = new System.Drawing.Size(146, 13);
+            this.lbl_ReceiverAccountNumber.Size = new System.Drawing.Size(191, 17);
             this.lbl_ReceiverAccountNumber.TabIndex = 4;
             this.lbl_ReceiverAccountNumber.Text = "Receiver\'s Account Number: ";
             // 
             // lbl_Pin
             // 
             this.lbl_Pin.AutoSize = true;
-            this.lbl_Pin.Location = new System.Drawing.Point(110, 69);
+            this.lbl_Pin.Location = new System.Drawing.Point(147, 85);
+            this.lbl_Pin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Pin.Name = "lbl_Pin";
-            this.lbl_Pin.Size = new System.Drawing.Size(56, 13);
+            this.lbl_Pin.Size = new System.Drawing.Size(72, 17);
             this.lbl_Pin.TabIndex = 5;
             this.lbl_Pin.Text = "Your PIN: ";
             // 
             // btn_Transfer
             // 
-            this.btn_Transfer.Location = new System.Drawing.Point(70, 92);
+            this.btn_Transfer.Location = new System.Drawing.Point(93, 113);
+            this.btn_Transfer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Transfer.Name = "btn_Transfer";
-            this.btn_Transfer.Size = new System.Drawing.Size(113, 23);
+            this.btn_Transfer.Size = new System.Drawing.Size(151, 28);
             this.btn_Transfer.TabIndex = 6;
             this.btn_Transfer.Text = "TRANSFER";
             this.btn_Transfer.UseVisualStyleBackColor = true;
@@ -104,9 +114,10 @@
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(189, 92);
+            this.btn_Cancel.Location = new System.Drawing.Point(252, 113);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(113, 23);
+            this.btn_Cancel.Size = new System.Drawing.Size(151, 28);
             this.btn_Cancel.TabIndex = 7;
             this.btn_Cancel.Text = "CANCEL";
             this.btn_Cancel.UseVisualStyleBackColor = true;
@@ -114,9 +125,9 @@
             // 
             // frm_TransferFunds
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 126);
+            this.ClientSize = new System.Drawing.Size(485, 145);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Transfer);
             this.Controls.Add(this.lbl_Pin);
@@ -125,10 +136,11 @@
             this.Controls.Add(this.txt_Pin);
             this.Controls.Add(this.txt_ReceiverAccountNumber);
             this.Controls.Add(this.txt_TransferAmount);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(382, 165);
+            this.MaximumSize = new System.Drawing.Size(503, 192);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(382, 165);
+            this.MinimumSize = new System.Drawing.Size(503, 192);
             this.Name = "frm_TransferFunds";
             this.Text = "Banks Banking - Transfer Funds";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_TransferFunds_FormClosing);
