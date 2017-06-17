@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace frm_LogIN
@@ -10,10 +11,13 @@ namespace frm_LogIN
         Account user, receiver;
         double transferAmount;
 
+        SqlCommand cmd;
+        SqlConnection con;
+
         //Temporary variables to be replaced by SQL variables
-        string r_lastName, r_firstName;
+        string r_lastName, r_firstName, r_pin;
         double r_balance;
-        int r_accountNumber = 987654, r_pin;
+        int r_accountNumber = 987654;
         List<Transaction_History> r_transactionHistory;
 
         public frm_TransferFunds()
@@ -35,6 +39,7 @@ namespace frm_LogIN
         private void frm_TransferFunds_Load(object sender, EventArgs e)
         {
             mainMenu = (frm_MainMenu)Application.OpenForms[1];
+            lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
         }
 
         private void btn_Transfer_Click(object sender, EventArgs e)
@@ -50,7 +55,7 @@ namespace frm_LogIN
             if (txt_Pin.Text == user.Pin.ToString())
             {
                 transferAmount = double.Parse(txt_TransferAmount.Text);
-                if (MessageBox.Show("Transfer PHP " + transferAmount.ToString("0.00") + " to Account #" +  "?", 
+                if (MessageBox.Show("Transfer PHP " + transferAmount.ToString("0.00") + " to Account No. " + txt_ReceiverAccountNumber.Text +  "?", 
                     "Confirming Transfer",
                     MessageBoxButtons.YesNo) == DialogResult.No)
                     MessageBox.Show("Transfer cancelled.");
@@ -61,8 +66,55 @@ namespace frm_LogIN
                     else
                     {
                         user.TransferFunds(transferAmount, receiver);
+
+                        //code for user
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("Update Bank_Account Set Balance = Balance -" + transferAmount + "where Account_Number = '"
+                            + user.AccountNumber + "'", con);
+                        cmd.ExecuteNonQuery();
+                        
+                        //code for receiver
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("Update Bank_Account Set Balance = Balance +" + transferAmount + "where Account_Number = '"
+                            + txt_ReceiverAccountNumber.Text + "'", con);
+                        cmd.ExecuteNonQuery();
+
+                        //Adding into transaction_history
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", con);
+                        cmd.Parameters.AddWithValue("@Transaction_Type", "Transfer Funds");
+                        cmd.Parameters.AddWithValue("@Amount", transferAmount);
+                        string date1 = DateTime.Now.ToString();
+                        cmd.Parameters.AddWithValue("@Date_Time", date1);
+                        cmd.Parameters.AddWithValue("@Account_Number", user.AccountNumber);
+                        cmd.ExecuteNonQuery();
+
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", con);
+                        cmd.Parameters.AddWithValue("@Transaction_Type", "Transfer Funds");
+                        cmd.Parameters.AddWithValue("@Amount", transferAmount);
+                        date1 = DateTime.Now.ToString();
+                        cmd.Parameters.AddWithValue("@Date_Time", date1);
+                        cmd.Parameters.AddWithValue("@Account_Number", txt_ReceiverAccountNumber.Text);
+                        cmd.ExecuteNonQuery();
+
+
+
                         MessageBox.Show("You have successfully transferred PHP " + transferAmount.ToString("0.00") +
                             "!", "Successful Transfer");
+                        btn_Cancel.Select();
                     }
                 }
             }
@@ -72,8 +124,8 @@ namespace frm_LogIN
 
         private void frm_TransferFunds_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel transfer of funds?", 
-                "Exiting", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel transfer of funds and return to Main Menu?", 
+                "Exiting...", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
                 mainMenu.Show();
