@@ -28,6 +28,9 @@ namespace frm_LogIN
     
         private void frm_MainMenu_Load(object sender, EventArgs e)
         {
+            lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
+            //lblCurrentTime.Text = System.DateTime.Now.ToString("T");
+
             logIn = (frm_Login)Application.OpenForms[0];
             logIn.Hide();
 
@@ -69,7 +72,7 @@ namespace frm_LogIN
 
         private void frm_MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to log out?", "Logging out", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure you want to log out?", "Log out?", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
                 logIn.Show();

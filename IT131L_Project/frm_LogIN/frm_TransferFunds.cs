@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
 using System.Windows.Forms;
 
 namespace frm_LogIN
@@ -13,11 +14,12 @@ namespace frm_LogIN
 
         SqlCommand cmd;
         SqlConnection connection;
+        DataRow[] selected;
 
         //Temporary variables to be replaced by SQL variables
         string r_lastName, r_firstName, r_pin;
         double r_balance;
-        int r_accountNumber = 987654;
+        int r_accountNumber;
         List<Transaction_History> r_transactionHistory;
 
         public frm_TransferFunds()
@@ -40,18 +42,11 @@ namespace frm_LogIN
         private void frm_TransferFunds_Load(object sender, EventArgs e)
         {
             mainMenu = (frm_MainMenu)Application.OpenForms[1];
+            lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
         }
 
         private void btn_Transfer_Click(object sender, EventArgs e)
         {
-            // Check if Account reciever exists in database using txt_ReceiverAccountNumber
-            // If no, then display 
-            // MessageBox.Show("Sorry. Account #" + txt_ReceiverAccountNumber + "does not exist. Please try again.",
-            //    "Invalid User");
-            // Else instantiate and proceed with code
-            receiver = new Account(r_lastName, r_firstName, r_balance, r_pin, r_accountNumber, r_transactionHistory);
-            // And replace variables with corresponding SQL variables
-
             if (txt_Pin.Text == user.Pin.ToString())
             {
                 transferAmount = double.Parse(txt_TransferAmount.Text);
@@ -65,46 +60,7 @@ namespace frm_LogIN
                         MessageBox.Show("Invalid transfer amount. Please enter a valid amount.", "Transfer Error");
                     else
                     {
-                        user.TransferFunds(transferAmount, receiver);
-
-                        //code for user
-                        connection.Open();
-                        cmd = new SqlCommand
-                            ("Update Bank_Account Set Balance = Balance -" + transferAmount + "where Account_Number = '"
-                            + user.AccountNumber + "'", connection);
-                        cmd.ExecuteNonQuery();
-
-                        //code for receiver
-                        cmd = new SqlCommand
-                            ("Update Bank_Account Set Balance = Balance +" + transferAmount + "where Account_Number = '"
-                            + txt_ReceiverAccountNumber.Text + "'", connection);
-                        cmd.ExecuteNonQuery();
-
-                        //Adding into transaction_history 
-                        //(user side)
-                        cmd = new SqlCommand
-                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
-                        cmd.Parameters.AddWithValue("@Transaction_Type", "Transferred to " + txt_ReceiverAccountNumber.Text);
-                        cmd.Parameters.AddWithValue("@Amount", transferAmount);
-                        DateTime date1 = DateTime.Now;
-                        cmd.Parameters.AddWithValue("@Date_Time", date1);
-                        cmd.Parameters.AddWithValue("@Account_Number", user.AccountNumber);
-                        cmd.ExecuteNonQuery();
-
-                        // (receiver side)
-                        cmd = new SqlCommand
-                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
-                        cmd.Parameters.AddWithValue("@Transaction_Type", "Received from " + user.AccountNumber);
-                        cmd.Parameters.AddWithValue("@Amount", transferAmount);
-                        date1 = DateTime.Now;
-                        cmd.Parameters.AddWithValue("@Date_Time", date1);
-                        cmd.Parameters.AddWithValue("@Account_Number", txt_ReceiverAccountNumber.Text);
-                        cmd.ExecuteNonQuery();
-
-                        connection.Close();
-
-                        MessageBox.Show("You have successfully transferred PHP " + transferAmount.ToString("0.00") +
-                            "!", "Successful Transfer");
+                        TransferValidAmount();
                     }
                 }
             }
@@ -114,13 +70,93 @@ namespace frm_LogIN
 
         private void frm_TransferFunds_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel transfer of funds?", 
-                "Exiting", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel transfer of funds and return to Main Menu?", 
+                "Exiting...", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
                 mainMenu.Show();
             else
                 e.Cancel = true;
+        }
+
+        // An extension of btnTransfer 
+        public void TransferValidAmount()
+        {
+            connection.Open();
+
+            cmd = new SqlCommand("SELECT *" +
+                   " FROM Bank_Account" +
+                   " WHERE Account_Number = '" + txt_ReceiverAccountNumber.Text + "'", connection);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                // Check if Account reciever exists in database using txt_ReceiverAccountNumber
+                if (reader.HasRows)
+                {
+                    while(reader.Read())
+                    {
+                        r_lastName = reader["Last_Name"].ToString();
+                        r_firstName = reader["First_Name"].ToString();
+                        r_balance = double.Parse(reader["Balance"].ToString());
+                        r_pin = reader["PIN"].ToString();
+                        r_accountNumber = int.Parse(reader["Account_Number"].ToString());
+                        receiver = new Account(r_lastName, r_firstName, r_balance, r_pin, r_accountNumber, r_transactionHistory);
+
+                        user.TransferFunds(transferAmount, receiver);
+
+                        //code for user
+                        //cmd = new SqlCommand
+                        //    ("Update Bank_Account Set Balance = Balance -" + transferAmount + "where Account_Number = '"
+                        //    + user.AccountNumber + "'", connection);
+                        cmd.CommandText = "Update Bank_Account Set Balance = Balance -" + transferAmount + "where Account_Number = '"
+                            + user.AccountNumber + "'";
+                        cmd.ExecuteNonQuery();
+
+                        //code for receiver
+                        //cmd = new SqlCommand
+                        //    ("Update Bank_Account Set Balance = Balance +" + transferAmount + "where Account_Number = '"
+                        //    + txt_ReceiverAccountNumber.Text + "'", connection);
+                        cmd.CommandText = "Update Bank_Account Set Balance = Balance +" + transferAmount + "where Account_Number = '"
+                            + txt_ReceiverAccountNumber.Text + "'";
+                        cmd.ExecuteNonQuery();
+
+                        //Adding into transaction_history - Current user
+                        //cmd = new SqlCommand
+                        //    ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        cmd.CommandText = "INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)";
+                        cmd.Parameters.AddWithValue("@Transaction_Type", "Transferred to " + txt_ReceiverAccountNumber.Text);
+                        cmd.Parameters.AddWithValue("@Amount", transferAmount);
+                        cmd.Parameters.AddWithValue("@Date_Time", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@Account_Number", user.AccountNumber);
+                        cmd.ExecuteNonQuery();
+
+                        //Receiver
+                        //cmd = new SqlCommand
+                        //    ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        cmd.CommandText = "INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)";
+                        cmd.Parameters["@Transaction_Type"].Value = "Received from " + user.AccountNumber;
+                        cmd.Parameters["@Amount"].Value = transferAmount;
+                        cmd.Parameters["@Date_Time"].Value = DateTime.Now;
+                        cmd.Parameters["@Account_Number"].Value = txt_ReceiverAccountNumber.Text;
+                        cmd.ExecuteNonQuery();
+
+                        connection.Close();
+
+                        MessageBox.Show("You have successfully transferred PHP " + transferAmount.ToString("0.00") +
+                            "!", "Successful Transfer");
+                        btn_Cancel.Select();
+                    }
+                }
+                // If no Account user
+                else
+                {
+                    MessageBox.Show("Sorry, the acccount #" + txt_ReceiverAccountNumber.Text + "does not exist. Please try again.",
+                       "Invalid User");
+                    txt_Pin.Text = "";
+                    txt_ReceiverAccountNumber.Text = "";
+                    txt_TransferAmount.Text = "";
+                }
+            }
         }
     }
 }

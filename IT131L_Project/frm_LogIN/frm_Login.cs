@@ -36,7 +36,7 @@ namespace frm_LogIN
                 accountNumber = txt_AccountNumber.Text;
                 pin = txt_Pin.Text;
 
-                connection = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=Project;Integrated Security=True"); // put Connection String
+                connection = new SqlConnection("Data Source=.\\SQLExpress;Initial Catalog=Project;Integrated Security=True"); // put Connection String
                 query = "SELECT * FROM Bank_Account where Account_Number = '" + accountNumber + "' AND PIN = '" + pin + "'";
                 sda = new SqlDataAdapter(query, connection);
                 dtbl = new DataTable();
@@ -56,6 +56,7 @@ namespace frm_LogIN
                 {
                     loginAttempts++;
                     MessageBox.Show("Your Account Number or PIN is incorrect.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txt_AccountNumber.Select();
 
                     if (loginAttempts == 3)
                     {

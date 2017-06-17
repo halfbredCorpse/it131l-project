@@ -28,12 +28,13 @@ namespace frm_LogIN
         private void frm_DepositMoney_Load(object sender, EventArgs e)
         {
             mainMenu = (frm_MainMenu)Application.OpenForms[1];
+            lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
         }
 
         private void frm_DepositMoney_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel your deposit?", 
-                "Exiting", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel your deposit and return to Main Menu?",
+                "Exiting...", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
                 mainMenu.Show();
@@ -70,8 +71,9 @@ namespace frm_LogIN
                         cmd.ExecuteNonQuery();
 
                         //Adding into transaction_history
-                        cmd = new SqlCommand
-                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        //cmd = new SqlCommand
+                        //    ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        cmd.CommandText = "INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)";
                         cmd.Parameters.AddWithValue("@Transaction_Type", "Deposit");
                         cmd.Parameters.AddWithValue("@Amount", depositAmount);
                         DateTime date1 = DateTime.Now;
@@ -83,6 +85,7 @@ namespace frm_LogIN
 
                         MessageBox.Show("You have successfully deposited PHP " + depositAmount.ToString("0.00") +
                             "!", "Successful Withdrawal");
+                        btn_Cancel.Select();
                     }
                 }
             }

@@ -26,6 +26,7 @@ namespace frm_LogIN
         private void frm_BalanceInquiry_Load(object sender, EventArgs e)
         {
             mainMenu = (frm_MainMenu)Application.OpenForms[1];
+            lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
 
             // Display all of the contents of Transaction_History for current user
             try
@@ -47,6 +48,7 @@ namespace frm_LogIN
                         {
                             if (dt.Rows[row][col].ToString() == "")
                                 lvi.SubItems.Add("NULL");
+
                             else
                                 lvi.SubItems.Add(dt.Rows[row][col].ToString());
                         }
