@@ -28,8 +28,8 @@ namespace frm_LogIN
     
         private void frm_MainMenu_Load(object sender, EventArgs e)
         {
-            lblCurrentDate.Text = System.DateTime.Now.ToString("D");
-            lblCurrentTime.Text = System.DateTime.Now.ToString("T");
+            lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
+            //lblCurrentTime.Text = System.DateTime.Now.ToString("T");
 
             logIn = (frm_Login)Application.OpenForms[0];
             logIn.Hide();

@@ -39,9 +39,7 @@ namespace frm_LogIN
         private void frm_TransferFunds_Load(object sender, EventArgs e)
         {
             mainMenu = (frm_MainMenu)Application.OpenForms[1];
-            lblCurrentDate.Text = System.DateTime.Now.ToString("D");
-            lblCurrentTime.Text = System.DateTime.Now.ToString("T");
-
+            lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
         }
 
         private void btn_Transfer_Click(object sender, EventArgs e)

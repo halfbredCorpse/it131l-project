@@ -28,9 +28,7 @@ namespace frm_LogIN
         private void frm_WithdrawMoney_Load(object sender, EventArgs e)
         {
             mainMenu = (frm_MainMenu)Application.OpenForms[1];
-            lblCurrentDate.Text = System.DateTime.Now.ToString("D");
-            lblCurrentTime.Text = System.DateTime.Now.ToString("T");
-
+            lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
         }
 
         private void frm_WithdrawMoney_FormClosing(object sender, FormClosingEventArgs e)

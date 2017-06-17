@@ -37,8 +37,7 @@
             this.btn_Withdraw = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblCurrentDate = new System.Windows.Forms.Label();
-            this.lblCurrentTime = new System.Windows.Forms.Label();
+            this.lblCurrentDateAndTime = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -125,27 +124,16 @@
             this.label1.TabIndex = 37;
             this.label1.Text = "WITHDRAWAL";
             // 
-            // lblCurrentDate
+            // lblCurrentDateAndTime
             // 
-            this.lblCurrentDate.AutoSize = true;
-            this.lblCurrentDate.BackColor = System.Drawing.Color.White;
-            this.lblCurrentDate.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentDate.Location = new System.Drawing.Point(462, 57);
-            this.lblCurrentDate.Name = "lblCurrentDate";
-            this.lblCurrentDate.Size = new System.Drawing.Size(41, 16);
-            this.lblCurrentDate.TabIndex = 36;
-            this.lblCurrentDate.Text = "label1";
-            // 
-            // lblCurrentTime
-            // 
-            this.lblCurrentTime.AutoSize = true;
-            this.lblCurrentTime.BackColor = System.Drawing.Color.White;
-            this.lblCurrentTime.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentTime.Location = new System.Drawing.Point(400, 57);
-            this.lblCurrentTime.Name = "lblCurrentTime";
-            this.lblCurrentTime.Size = new System.Drawing.Size(41, 16);
-            this.lblCurrentTime.TabIndex = 35;
-            this.lblCurrentTime.Text = "label1";
+            this.lblCurrentDateAndTime.AutoSize = true;
+            this.lblCurrentDateAndTime.BackColor = System.Drawing.Color.White;
+            this.lblCurrentDateAndTime.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentDateAndTime.Location = new System.Drawing.Point(400, 64);
+            this.lblCurrentDateAndTime.Name = "lblCurrentDateAndTime";
+            this.lblCurrentDateAndTime.Size = new System.Drawing.Size(41, 16);
+            this.lblCurrentDateAndTime.TabIndex = 36;
+            this.lblCurrentDateAndTime.Text = "label1";
             // 
             // pictureBox2
             // 
@@ -198,8 +186,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 361);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblCurrentDate);
-            this.Controls.Add(this.lblCurrentTime);
+            this.Controls.Add(this.lblCurrentDateAndTime);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox4);
@@ -238,8 +225,7 @@
         private System.Windows.Forms.Button btn_Withdraw;
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblCurrentDate;
-        private System.Windows.Forms.Label lblCurrentTime;
+        private System.Windows.Forms.Label lblCurrentDateAndTime;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
