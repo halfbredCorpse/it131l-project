@@ -28,11 +28,13 @@ namespace frm_LogIN
         private void frm_WithdrawMoney_Load(object sender, EventArgs e)
         {
             mainMenu = (frm_MainMenu)Application.OpenForms[1];
+            lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
         }
 
         private void frm_WithdrawMoney_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel your withdrawal?", "Exiting", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel your withdrawal and return to Main Menu?",
+                "Exiting...", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
                 mainMenu.Show();
@@ -82,6 +84,7 @@ namespace frm_LogIN
 
                         MessageBox.Show("You have successfully withdrawn PHP " + withdrawAmount.ToString("0.00") +
                             "!", "Successful Withdrawal");
+                        btn_Cancel.Select();
                     }
                 }
             }

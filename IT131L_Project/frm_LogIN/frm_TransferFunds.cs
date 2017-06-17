@@ -12,7 +12,11 @@ namespace frm_LogIN
         double transferAmount;
 
         SqlCommand cmd;
+<<<<<<< HEAD
         SqlConnection connection;
+=======
+        SqlConnection con;
+>>>>>>> refs/remotes/origin/master
 
         //Temporary variables to be replaced by SQL variables
         string r_lastName, r_firstName, r_pin;
@@ -58,6 +62,7 @@ namespace frm_LogIN
         private void frm_TransferFunds_Load(object sender, EventArgs e)
         {
             mainMenu = (frm_MainMenu)Application.OpenForms[1];
+            lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
         }
 
         private void btn_Transfer_Click(object sender, EventArgs e)
@@ -86,6 +91,7 @@ namespace frm_LogIN
                         user.TransferFunds(transferAmount, receiver);
 
                         //code for user
+<<<<<<< HEAD
                         connection.Open();
                         cmd = new SqlCommand
                             ("Update Bank_Account Set Balance = Balance -" + transferAmount + "where Account_Number = '"
@@ -105,24 +111,68 @@ namespace frm_LogIN
                         cmd.Parameters.AddWithValue("@Transaction_Type", "Transferred to " + txt_ReceiverAccountNumber.Text);
                         cmd.Parameters.AddWithValue("@Amount", transferAmount);
                         DateTime date1 = DateTime.Now;
+=======
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("Update Bank_Account Set Balance = Balance -" + transferAmount + "where Account_Number = '"
+                            + user.AccountNumber + "'", con);
+                        cmd.ExecuteNonQuery();
+                        
+                        //code for receiver
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("Update Bank_Account Set Balance = Balance +" + transferAmount + "where Account_Number = '"
+                            + txt_ReceiverAccountNumber.Text + "'", con);
+                        cmd.ExecuteNonQuery();
+
+                        //Adding into transaction_history
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", con);
+                        cmd.Parameters.AddWithValue("@Transaction_Type", "Transfer Funds");
+                        cmd.Parameters.AddWithValue("@Amount", transferAmount);
+                        string date1 = DateTime.Now.ToString();
+>>>>>>> refs/remotes/origin/master
                         cmd.Parameters.AddWithValue("@Date_Time", date1);
                         cmd.Parameters.AddWithValue("@Account_Number", user.AccountNumber);
                         cmd.ExecuteNonQuery();
 
+<<<<<<< HEAD
                         // (receiver side)
                         cmd = new SqlCommand
                             ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
                         cmd.Parameters.AddWithValue("@Transaction_Type", "Received from " + user.AccountNumber);
                         cmd.Parameters.AddWithValue("@Amount", transferAmount);
                         date1 = DateTime.Now;
+=======
+                        con = new SqlConnection
+                        (@"Data Source=(local);Initial Catalog=Project;Integrated Security=True");
+                        con.Open();
+                        cmd = new SqlCommand
+                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", con);
+                        cmd.Parameters.AddWithValue("@Transaction_Type", "Transfer Funds");
+                        cmd.Parameters.AddWithValue("@Amount", transferAmount);
+                        date1 = DateTime.Now.ToString();
+>>>>>>> refs/remotes/origin/master
                         cmd.Parameters.AddWithValue("@Date_Time", date1);
                         cmd.Parameters.AddWithValue("@Account_Number", txt_ReceiverAccountNumber.Text);
                         cmd.ExecuteNonQuery();
 
+<<<<<<< HEAD
                         connection.Close();
+=======
+
+>>>>>>> refs/remotes/origin/master
 
                         MessageBox.Show("You have successfully transferred PHP " + transferAmount.ToString("0.00") +
                             "!", "Successful Transfer");
+                        btn_Cancel.Select();
                     }
                 }
             }
@@ -132,8 +182,8 @@ namespace frm_LogIN
 
         private void frm_TransferFunds_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel transfer of funds?", 
-                "Exiting", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel transfer of funds and return to Main Menu?", 
+                "Exiting...", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
                 mainMenu.Show();
