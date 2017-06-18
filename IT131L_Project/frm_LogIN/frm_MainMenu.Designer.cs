@@ -218,7 +218,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(605, 400);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(605, 400);
             this.Name = "frm_MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

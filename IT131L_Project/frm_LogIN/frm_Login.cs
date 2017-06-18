@@ -81,18 +81,6 @@ namespace frm_LogIN
             Login();
         }
 
-        private void txt_AccountNumber_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-                Login();
-        }
-
-        private void txt_Pin_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                Login();
-        }
-
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             Close();
