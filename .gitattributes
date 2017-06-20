@@ -1,2 +1,5 @@
-'* text=auto' 
+# Normalization
+'* text=auto'
+
+# Helps lessen resolve conflicts
 '*.cs diff=csharp' 
