@@ -55,7 +55,7 @@ namespace frm_LogIN
             {
                 if (withdrawAmount < 100 || withdrawAmount > 20000 || withdrawAmount > user.Balance)
                     MessageBox.Show("You have entered an invalid amount to withdraw. Please try again.", "Withdrawal Error");
-                else if (withdrawAmount % 10 != 0 && (withdrawAmount % 100) / 10 != 0 || Math.Round(withdrawAmount - Math.Truncate(withdrawAmount), 2) != 0)
+                else if (withdrawAmount % 10 != 0 || (withdrawAmount % 100) / 10 != 0 || Math.Round(withdrawAmount - Math.Truncate(withdrawAmount), 2) != 0)
                     MessageBox.Show("Withdrawal Amount should be multiples of 100.", "Withdrawal Error");
                 else if (MessageBox.Show("Withdraw PHP " + withdrawAmount.ToString("0.00") + "?", "Confirming Withdrawal",
                         MessageBoxButtons.YesNo) == DialogResult.No)
