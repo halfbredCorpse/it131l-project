@@ -51,7 +51,7 @@ namespace frm_LogIN
                 if (dtbl.Rows.Count == 1)
                 {
                     foreach (DataRow row in selected)
-                        user = new Account(row["Last_Name"].ToString(), row["First_Name"].ToString(), double.Parse(row["Balance"].ToString()), row["PIN"].ToString(), int.Parse(row["Account_Number"].ToString()), new List<Transaction_History>());
+                        user = Account.CreateInstance(row["Last_Name"].ToString(), row["First_Name"].ToString(), double.Parse(row["Balance"].ToString()), row["PIN"].ToString(), int.Parse(row["Account_Number"].ToString()), new List<Transaction_History>());
 
                     MessageBox.Show("You have successfully logged in.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     mainMenu = new frm_MainMenu(user, connection);
@@ -83,7 +83,6 @@ namespace frm_LogIN
 
         private void btn_LogIn_Click(object sender, EventArgs e)
         {
-           
             Login();
         }
 

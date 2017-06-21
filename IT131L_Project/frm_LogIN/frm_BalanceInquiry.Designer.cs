@@ -122,7 +122,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(175)))), ((int)(((byte)(11)))));
-            this.label1.Location = new System.Drawing.Point(116, 55);
+            this.label1.Location = new System.Drawing.Point(116, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(141, 18);
             this.label1.TabIndex = 37;
@@ -133,7 +133,7 @@
             this.lblCurrentDateAndTime.AutoSize = true;
             this.lblCurrentDateAndTime.BackColor = System.Drawing.Color.White;
             this.lblCurrentDateAndTime.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentDateAndTime.Location = new System.Drawing.Point(511, 58);
+            this.lblCurrentDateAndTime.Location = new System.Drawing.Point(496, 58);
             this.lblCurrentDateAndTime.Name = "lblCurrentDateAndTime";
             this.lblCurrentDateAndTime.Size = new System.Drawing.Size(41, 16);
             this.lblCurrentDateAndTime.TabIndex = 36;
@@ -142,9 +142,9 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Green;
-            this.pictureBox2.Location = new System.Drawing.Point(-6, 78);
+            this.pictureBox2.Location = new System.Drawing.Point(-6, 83);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(710, 15);
+            this.pictureBox2.Size = new System.Drawing.Size(721, 15);
             this.pictureBox2.TabIndex = 32;
             this.pictureBox2.TabStop = false;
             // 
@@ -174,7 +174,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Location = new System.Drawing.Point(-6, -4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(710, 97);
+            this.pictureBox1.Size = new System.Drawing.Size(721, 97);
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
             // 

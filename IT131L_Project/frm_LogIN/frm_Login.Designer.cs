@@ -125,7 +125,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Green;
             this.pictureBox2.Location = new System.Drawing.Point(-6, 93);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(596, 15);
+            this.pictureBox2.Size = new System.Drawing.Size(569, 15);
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
@@ -144,7 +144,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Location = new System.Drawing.Point(-6, -1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(596, 97);
+            this.pictureBox1.Size = new System.Drawing.Size(569, 97);
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 

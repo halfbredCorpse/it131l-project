@@ -14,7 +14,6 @@ namespace frm_LogIN
 
         SqlCommand cmd;
         SqlConnection connection;
-        DataRow[] selected;
 
         //Temporary variables to be replaced by SQL variables
         string r_lastName, r_firstName, r_pin;
@@ -47,6 +46,8 @@ namespace frm_LogIN
 
         private void btn_Transfer_Click(object sender, EventArgs e)
         {
+            int loginAttempts = 0;
+
             if (txt_Pin.Text == user.Pin.ToString())
             {
                 transferAmount = double.Parse(txt_TransferAmount.Text);
@@ -70,7 +71,17 @@ namespace frm_LogIN
                 }
             }
             else
+            {
                 MessageBox.Show("Sorry. Your PIN is incorrect. Please try again.", "Incorrect PIN");
+                loginAttempts++;
+
+                if (loginAttempts == 3)
+                {
+                    MessageBox.Show("You have exceeded the number of allowed attempts to enter your PIN. \nYour transfer will now be canceled.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Exit();
+                }
+            }
+                
         }
 
         private void frm_TransferFunds_FormClosing(object sender, FormClosingEventArgs e)
@@ -101,6 +112,7 @@ namespace frm_LogIN
                         r_balance = double.Parse(reader["Balance"].ToString());
                         r_pin = reader["PIN"].ToString();
                         r_accountNumber = int.Parse(reader["Account_Number"].ToString());
+                        r_transactionHistory = new List<Transaction_History>();
                         receiver = new Account(r_lastName, r_firstName, r_balance, r_pin, r_accountNumber, r_transactionHistory);
                     }
 
