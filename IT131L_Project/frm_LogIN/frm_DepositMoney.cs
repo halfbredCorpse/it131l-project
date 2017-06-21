@@ -53,7 +53,6 @@ namespace frm_LogIN
 
             if (txt_Pin.Text == user.Pin.ToString())
             {
-                depositAmount = double.Parse(txt_DepositAmount.Text);
                 if (MessageBox.Show("Deposit PHP " + depositAmount.ToString("0.00") + "?", "Confirming Deposit",
                     MessageBoxButtons.YesNo) == DialogResult.No)
                     MessageBox.Show("Deposit cancelled.");
@@ -106,6 +105,20 @@ namespace frm_LogIN
 
             txt_DepositAmount.Text = "0.00";
             txt_Pin.Text = "";
+        }
+
+        private void txt_DepositAmount_Leave(object sender, EventArgs e)
+        {
+            depositAmount = double.Parse(txt_DepositAmount.Text);
+            txt_DepositAmount.Text = String.Format("{0:N2}",depositAmount);
+        }
+
+        private void txt_DepositAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.')
+            {
+                txt_DepositAmount.MaxLength = txt_DepositAmount.TextLength + 3;
+            }
         }
     }
 }
