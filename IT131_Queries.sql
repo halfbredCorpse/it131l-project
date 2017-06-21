@@ -62,7 +62,7 @@ CREATE TABLE Bank_Account(
 
 CREATE TABLE Transaction_History(
 	Transaction_Number int IDENTITY(100000,1) PRIMARY KEY NOT NULL,
-	Transaction_Type varchar(25) NOT NULL,
+	Transaction_Type varchar(40) NOT NULL,
 	Amount decimal(20,2) NOT NULL,
 	Date_Time datetime NOT NULL,
 	Account_Number bigint NOT NULL

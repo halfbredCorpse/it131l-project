@@ -89,7 +89,6 @@
             this.txt_Pin.Size = new System.Drawing.Size(171, 26);
             this.txt_Pin.TabIndex = 8;
             this.txt_Pin.UseSystemPasswordChar = true;
-            this.txt_Pin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Pin_KeyDown);
             // 
             // txt_AccountNumber
             // 
@@ -99,7 +98,6 @@
             this.txt_AccountNumber.Name = "txt_AccountNumber";
             this.txt_AccountNumber.Size = new System.Drawing.Size(171, 26);
             this.txt_AccountNumber.TabIndex = 7;
-            this.txt_AccountNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_AccountNumber_KeyDown);
             // 
             // lbl_AccountNumber
             // 
@@ -127,7 +125,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Green;
             this.pictureBox2.Location = new System.Drawing.Point(-6, 93);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(596, 15);
+            this.pictureBox2.Size = new System.Drawing.Size(569, 15);
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
@@ -146,7 +144,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Location = new System.Drawing.Point(-6, -1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(596, 97);
+            this.pictureBox1.Size = new System.Drawing.Size(569, 97);
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
@@ -163,6 +161,7 @@
             // 
             // frm_Login
             // 
+            this.AcceptButton = this.btn_LogIn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 361);
@@ -180,11 +179,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(570, 400);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(570, 400);
             this.Name = "frm_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Banks\' Banking - Log In";
+            this.Load += new System.EventHandler(this.frm_Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

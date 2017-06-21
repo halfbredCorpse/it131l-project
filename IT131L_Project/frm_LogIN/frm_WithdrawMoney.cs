@@ -71,8 +71,9 @@ namespace frm_LogIN
                         cmd.ExecuteNonQuery();
 
                         //Adding into transaction_history
-                        cmd = new SqlCommand
-                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        //cmd = new SqlCommand
+                        //    ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        cmd.CommandText = "INSERT INTO Transaction_History (Transaction_Number,Transaction_Type,Amount,Date_Time,Account_Number) VALUES (NEXT VALUE FOR Transac_Number_Seq, @Transaction_Type,@Amount, @Date_Time, @Account_Number)";
                         cmd.Parameters.AddWithValue("@Transaction_Type", "Withdrawal");
                         cmd.Parameters.AddWithValue("@Amount", withdrawAmount);
                         DateTime date1 = DateTime.Now;
@@ -93,6 +94,7 @@ namespace frm_LogIN
 
             txt_WithdrawAmount.Text = "0.00";
             txt_Pin.Text = "";
+            txt_WithdrawAmount.Select();
         }
     }
 }
