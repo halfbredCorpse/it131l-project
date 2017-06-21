@@ -60,6 +60,8 @@
             this.txt_TransferAmount.TabIndex = 0;
             this.txt_TransferAmount.Text = "0.00";
             this.txt_TransferAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_TransferAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TransferAmount_KeyPress);
+            this.txt_TransferAmount.Leave += new System.EventHandler(this.txt_TransferAmount_Leave);
             // 
             // txt_ReceiverAccountNumber
             // 

@@ -113,6 +113,7 @@
             this.txt_DepositAmount.TabIndex = 6;
             this.txt_DepositAmount.Text = "0.00";
             this.txt_DepositAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_DepositAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_DepositAmount_KeyPress);
             this.txt_DepositAmount.Leave += new System.EventHandler(this.txt_DepositAmount_Leave);
             // 
             // label1

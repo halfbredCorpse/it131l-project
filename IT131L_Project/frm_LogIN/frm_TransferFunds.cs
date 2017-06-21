@@ -44,6 +44,20 @@ namespace frm_LogIN
             lblCurrentDateAndTime.Text = String.Format("{0:f}", DateTime.Now);
         }
 
+        private void txt_TransferAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.')
+            {
+                txt_TransferAmount.MaxLength = txt_TransferAmount.TextLength + 3;
+            }
+        }
+
+        private void txt_TransferAmount_Leave(object sender, EventArgs e)
+        {
+            transferAmount = double.Parse(txt_TransferAmount.Text);
+            txt_TransferAmount.Text = String.Format("{0:N2}", transferAmount);
+        }
+
         private void btn_Transfer_Click(object sender, EventArgs e)
         {
             int loginAttempts = 0;

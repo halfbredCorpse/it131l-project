@@ -58,6 +58,7 @@
             this.txt_WithdrawAmount.TabIndex = 0;
             this.txt_WithdrawAmount.Text = "0.00";
             this.txt_WithdrawAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_WithdrawAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_WithdrawAmount_KeyPress);
             this.txt_WithdrawAmount.Leave += new System.EventHandler(this.txt_WithdrawAmount_Leave);
             // 
             // txt_Pin

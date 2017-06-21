@@ -112,5 +112,13 @@ namespace frm_LogIN
             withdrawAmount = double.Parse(txt_WithdrawAmount.Text);
             txt_WithdrawAmount.Text = String.Format("{0:N2}", withdrawAmount);
         }
+
+        private void txt_WithdrawAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == '.')
+            {
+                txt_WithdrawAmount.MaxLength = txt_WithdrawAmount.TextLength + 3;
+            }
+        }
     }
 }
