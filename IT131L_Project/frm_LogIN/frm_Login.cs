@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.Entity;
 using System.Data;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace frm_LogIN
 {
@@ -14,6 +17,7 @@ namespace frm_LogIN
         SqlConnection connection;
         string query;
         SqlDataAdapter sda;
+        SqlCommand cmd;
         DataTable dtbl;
         DataRow[] selected;
         int loginAttempts;
@@ -25,7 +29,8 @@ namespace frm_LogIN
 
         private void Login()
         {
-             if (string.IsNullOrEmpty(txt_AccountNumber.Text))
+
+            if (string.IsNullOrEmpty(txt_AccountNumber.Text))
             {
                 MessageBox.Show("Please enter your Account Number.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_AccountNumber.Focus();
@@ -36,7 +41,7 @@ namespace frm_LogIN
                 accountNumber = txt_AccountNumber.Text;
                 pin = txt_Pin.Text;
 
-                connection = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=Project;Integrated Security=True"); // put Connection String
+                connection = new SqlConnection("Data Source=.\\SQLExpress;Initial Catalog=Project;Integrated Security=True");
                 query = "SELECT * FROM Bank_Account where Account_Number = '" + accountNumber + "' AND PIN = '" + pin + "'";
                 sda = new SqlDataAdapter(query, connection);
                 dtbl = new DataTable();
@@ -46,7 +51,7 @@ namespace frm_LogIN
                 if (dtbl.Rows.Count == 1)
                 {
                     foreach (DataRow row in selected)
-                        user = new Account(row["Last_Name"].ToString(), row["First_Name"].ToString(), double.Parse(row["Balance"].ToString()), row["PIN"].ToString(), int.Parse(row["Account_Number"].ToString()), new List<Transaction_History>());
+                        user = Account.CreateInstance(row["Last_Name"].ToString(), row["First_Name"].ToString(), double.Parse(row["Balance"].ToString()), row["PIN"].ToString(), int.Parse(row["Account_Number"].ToString()), new List<Transaction_History>());
 
                     MessageBox.Show("You have successfully logged in.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     mainMenu = new frm_MainMenu(user, connection);
@@ -81,16 +86,51 @@ namespace frm_LogIN
             Login();
         }
 
-        private void txt_AccountNumber_KeyDown(object sender, KeyEventArgs e)
+        private void frm_Login_Load(object sender, EventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
-                Login();
-        }
+            // NOTE: QUERIES.sql is in C:\Users\<User>\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug
+            connection = new SqlConnection("Server=.\\SQLEXPRESS;Trusted_Connection=yes;Database=master");
+            // Checks if database exists
+            using (connection)
+            {
+                using (cmd = new SqlCommand("SELECT database_id FROM sys.databases WHERE name = 'Project'", connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        if (cmd.ExecuteScalar() == null)
+                        {
+                            query = "CREATE DATABASE Project";
+                            cmd.CommandText = query;
+                            cmd.ExecuteNonQuery();
 
-        private void txt_Pin_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                Login();
+                            connection.Close();
+
+                            connection.ConnectionString = "Data Source=.\\SQLExpress;Initial Catalog=Project;Integrated Security=True";
+
+                            string script = File.ReadAllText(Path.GetDirectoryName(Application.ExecutablePath) + "\\QUERIES.sql");
+                            IEnumerable<string> commandStrings = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
+                            connection.Open();
+                            foreach (string commandString in commandStrings)
+                            {
+                                if (commandString.Trim() != "")
+                                {
+                                    using (SqlCommand command = new SqlCommand(commandString, connection))
+                                    {
+                                        command.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                            connection.Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)

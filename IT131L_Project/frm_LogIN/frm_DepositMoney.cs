@@ -49,9 +49,10 @@ namespace frm_LogIN
 
         private void btn_Deposit_Click(object sender, EventArgs e)
         {
+            int loginAttempts = 0;
+
             if (txt_Pin.Text == user.Pin.ToString())
             {
-                depositAmount = double.Parse(txt_DepositAmount.Text);
                 if (MessageBox.Show("Deposit PHP " + depositAmount.ToString("0.00") + "?", "Confirming Deposit",
                     MessageBoxButtons.YesNo) == DialogResult.No)
                     MessageBox.Show("Deposit cancelled.");
@@ -71,8 +72,9 @@ namespace frm_LogIN
                         cmd.ExecuteNonQuery();
 
                         //Adding into transaction_history
-                        cmd = new SqlCommand
-                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        //cmd = new SqlCommand
+                        //    ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        cmd.CommandText = "INSERT INTO Transaction_History (Transaction_Number,Transaction_Type,Amount,Date_Time,Account_Number) VALUES (NEXT VALUE FOR Transac_Number_Seq, @Transaction_Type,@Amount, @Date_Time, @Account_Number)";
                         cmd.Parameters.AddWithValue("@Transaction_Type", "Deposit");
                         cmd.Parameters.AddWithValue("@Amount", depositAmount);
                         DateTime date1 = DateTime.Now;
@@ -89,10 +91,34 @@ namespace frm_LogIN
                 }
             }
             else
+            {
                 MessageBox.Show("Sorry. Your PIN is incorrect. Please try again.", "Incorrect PIN", MessageBoxButtons.OK);
+                loginAttempts++;
+
+                if (loginAttempts == 3)
+                {
+                    MessageBox.Show("You have exceeded the number of allowed attempts to enter your PIN. \nYour deposit will now be canceled.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Exit();
+                }
+            }
+                
 
             txt_DepositAmount.Text = "0.00";
             txt_Pin.Text = "";
+        }
+
+        private void txt_DepositAmount_Leave(object sender, EventArgs e)
+        {
+            depositAmount = double.Parse(txt_DepositAmount.Text);
+            txt_DepositAmount.Text = String.Format("{0:N2}",depositAmount);
+        }
+
+        private void txt_DepositAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.')
+            {
+                txt_DepositAmount.MaxLength = txt_DepositAmount.TextLength + 3;
+            }
         }
     }
 }
