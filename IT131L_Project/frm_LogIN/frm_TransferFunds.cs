@@ -75,7 +75,7 @@ namespace frm_LogIN
 
         private void frm_TransferFunds_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel transfer of fuanssfends and return to Main Menu?", 
+            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel transfer of funds and return to Main Menu?", 
                 "Exiting...", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
@@ -127,7 +127,7 @@ namespace frm_LogIN
                     //Adding into transaction_history - Current user
                     //cmd = new SqlCommand
                     //    ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
-                    cmd.CommandText = "INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)";
+                    cmd.CommandText = "INSERT INTO Transaction_History (Transaction_Number,Transaction_Type,Amount,Date_Time,Account_Number) VALUES (NEXT VALUE FOR Transac_Number_Seq, @Transaction_Type,@Amount, @Date_Time, @Account_Number)";
                     cmd.Parameters.AddWithValue("@Transaction_Type", "Transferred to " + txt_ReceiverAccountNumber.Text);
                     cmd.Parameters.AddWithValue("@Amount", transferAmount);
                     cmd.Parameters.AddWithValue("@Date_Time", DateTime.Now);
@@ -137,7 +137,7 @@ namespace frm_LogIN
                     //Receiver
                     //cmd = new SqlCommand
                     //    ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
-                    cmd.CommandText = "INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)";
+                    cmd.CommandText = "INSERT INTO Transaction_History (Transaction_Number,Transaction_Type,Amount,Date_Time,Account_Number) VALUES (NEXT VALUE FOR Transac_Number_Seq,@Transaction_Type,@Amount, @Date_Time, @Account_Number)";
                     cmd.Parameters["@Transaction_Type"].Value = "Received from " + user.AccountNumber;
                     cmd.Parameters["@Amount"].Value = transferAmount;
                     cmd.Parameters["@Date_Time"].Value = DateTime.Now;

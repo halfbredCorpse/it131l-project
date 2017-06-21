@@ -83,6 +83,12 @@ namespace frm_LogIN
 
         private void btn_LogIn_Click(object sender, EventArgs e)
         {
+           
+            Login();
+        }
+
+        private void frm_Login_Load(object sender, EventArgs e)
+        {
             // NOTE: QUERIES.sql is in C:\Users\<User>\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug
             connection = new SqlConnection("Server=.\\SQLEXPRESS;Trusted_Connection=yes;Database=master");
             // Checks if database exists
@@ -126,12 +132,6 @@ namespace frm_LogIN
                     }
                 }
             }
-            Login();
-        }
-
-        private void frm_Login_Load(object sender, EventArgs e)
-        {
-          
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
