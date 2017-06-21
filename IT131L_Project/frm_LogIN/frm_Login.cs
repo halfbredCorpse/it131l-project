@@ -16,6 +16,7 @@ namespace frm_LogIN
         string accountNumber, pin;
         SqlConnection connection;
         string query;
+        string connection1= @"Data Source=.;Initial Catalog=Project;Integrated Security=True";
         SqlDataAdapter sda;
         SqlCommand cmd;
         DataTable dtbl;
@@ -41,7 +42,7 @@ namespace frm_LogIN
                 accountNumber = txt_AccountNumber.Text;
                 pin = txt_Pin.Text;
 
-                connection = new SqlConnection("Data Source=.\\SQLExpress;Initial Catalog=Project;Integrated Security=True");
+                connection = new SqlConnection(connection1);
                 query = "SELECT * FROM Bank_Account where Account_Number = '" + accountNumber + "' AND PIN = '" + pin + "'";
                 sda = new SqlDataAdapter(query, connection);
                 dtbl = new DataTable();
@@ -89,7 +90,7 @@ namespace frm_LogIN
         private void frm_Login_Load(object sender, EventArgs e)
         {
             // NOTE: QUERIES.sql is in C:\Users\<User>\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug
-            connection = new SqlConnection("Server=.\\SQLEXPRESS;Trusted_Connection=yes;Database=master");
+            connection = new SqlConnection("Server=.;Trusted_Connection=yes;Database=master");
             // Checks if database exists
             using (connection)
             {
@@ -106,7 +107,7 @@ namespace frm_LogIN
 
                             connection.Close();
 
-                            connection.ConnectionString = "Data Source=.\\SQLExpress;Initial Catalog=Project;Integrated Security=True";
+                            connection.ConnectionString = connection1;
 
                             string script = File.ReadAllText(Path.GetDirectoryName(Application.ExecutablePath) + "\\QUERIES.sql");
                             IEnumerable<string> commandStrings = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
