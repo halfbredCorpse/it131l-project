@@ -129,7 +129,7 @@
             this.lblCurrentDateAndTime.AutoSize = true;
             this.lblCurrentDateAndTime.BackColor = System.Drawing.Color.White;
             this.lblCurrentDateAndTime.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentDateAndTime.Location = new System.Drawing.Point(400, 64);
+            this.lblCurrentDateAndTime.Location = new System.Drawing.Point(372, 64);
             this.lblCurrentDateAndTime.Name = "lblCurrentDateAndTime";
             this.lblCurrentDateAndTime.Size = new System.Drawing.Size(41, 16);
             this.lblCurrentDateAndTime.TabIndex = 36;
@@ -140,7 +140,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Green;
             this.pictureBox2.Location = new System.Drawing.Point(-6, 83);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(596, 15);
+            this.pictureBox2.Size = new System.Drawing.Size(605, 15);
             this.pictureBox2.TabIndex = 32;
             this.pictureBox2.TabStop = false;
             // 
@@ -170,7 +170,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Location = new System.Drawing.Point(-6, -4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(596, 97);
+            this.pictureBox1.Size = new System.Drawing.Size(605, 97);
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
             // 
@@ -182,6 +182,7 @@
             // 
             // frm_WithdrawMoney
             // 
+            this.AcceptButton = this.btn_Withdraw;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 361);
@@ -200,7 +201,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(605, 400);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(605, 400);
             this.Name = "frm_WithdrawMoney";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

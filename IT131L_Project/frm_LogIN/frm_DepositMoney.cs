@@ -71,8 +71,9 @@ namespace frm_LogIN
                         cmd.ExecuteNonQuery();
 
                         //Adding into transaction_history
-                        cmd = new SqlCommand
-                            ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        //cmd = new SqlCommand
+                        //    ("INSERT INTO Transaction_History (Transaction_Type,Amount,Date_Time,Account_Number) VALUES (@Transaction_Type,@Amount, @Date_Time, @Account_Number)", connection);
+                        cmd.CommandText = "INSERT INTO Transaction_History (Transaction_Number,Transaction_Type,Amount,Date_Time,Account_Number) VALUES (NEXT VALUE FOR Transac_Number_Seq, @Transaction_Type,@Amount, @Date_Time, @Account_Number)";
                         cmd.Parameters.AddWithValue("@Transaction_Type", "Deposit");
                         cmd.Parameters.AddWithValue("@Amount", depositAmount);
                         DateTime date1 = DateTime.Now;
