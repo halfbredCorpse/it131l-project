@@ -155,3 +155,10 @@ C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\o
 C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.frm_WithdrawMoney.resources
 C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIN.Properties.Resources.resources
 C:\Users\arist\Desktop\for testing 131\IT131L_Project\IT131L_Project\frm_LogIN\obj\Debug\frm_LogIn.csproj.GenerateResource.Cache
+C:\Users\Jasmin Rose Lim\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+C:\Users\Jasmin Rose Lim\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
+C:\Users\Jasmin Rose Lim\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.Smo.dll
+C:\Users\Jasmin Rose Lim\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
+C:\Users\Jasmin Rose Lim\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
+C:\Users\Jasmin Rose Lim\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.SmoExtended.dll
+C:\Users\Jasmin Rose Lim\Documents\GitHub\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.RegSvrEnum.dll

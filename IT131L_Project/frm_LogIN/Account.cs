@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace frm_LogIN
 {
@@ -8,6 +9,10 @@ namespace frm_LogIN
         double balance;
         int accountNumber;
         List<Transaction_History> transaction_history;
+
+        // Thread-safe Singleton
+        private static volatile Account instance = null;
+        private static object syncRoot = new Object();
 
         public string Last_Name
         {
@@ -50,6 +55,24 @@ namespace frm_LogIN
             this.pin = pin;
             this.accountNumber = accountNumber;
             this.transaction_history = transaction_history;
+        }
+
+        // Singleton instantiation
+        public static Account Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                            instance = new Account(instance.last_name, instance.first_name, instance.balance, instance.pin, instance.accountNumber, instance.transaction_history);
+                    }
+                }
+
+                return instance;
+            }
         }
 
         public void WithdrawMoney(double withdrawAmount)
