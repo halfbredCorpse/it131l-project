@@ -14,7 +14,6 @@ namespace frm_LogIN
 
         SqlCommand cmd;
         SqlConnection connection;
-        DataRow[] selected;
 
         //Temporary variables to be replaced by SQL variables
         string r_lastName, r_firstName, r_pin;
@@ -78,7 +77,7 @@ namespace frm_LogIN
 
                 if (loginAttempts == 3)
                 {
-                    MessageBox.Show("You have exceeded the number of allowed attempts to enter your PIN. \nYour withdrawal will now be canceled.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("You have exceeded the number of allowed attempts to enter your PIN. \nYour transfer will now be canceled.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Application.Exit();
                 }
             }
@@ -113,6 +112,7 @@ namespace frm_LogIN
                         r_balance = double.Parse(reader["Balance"].ToString());
                         r_pin = reader["PIN"].ToString();
                         r_accountNumber = int.Parse(reader["Account_Number"].ToString());
+                        r_transactionHistory = new List<Transaction_History>();
                         receiver = new Account(r_lastName, r_firstName, r_balance, r_pin, r_accountNumber, r_transactionHistory);
                     }
 

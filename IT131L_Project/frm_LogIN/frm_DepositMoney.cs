@@ -98,7 +98,7 @@ namespace frm_LogIN
 
                 if (loginAttempts == 3)
                 {
-                    MessageBox.Show("You have exceeded the number of allowed attempts to enter your PIN. \nYour withdrawal will now be canceled.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("You have exceeded the number of allowed attempts to enter your PIN. \nYour deposit will now be canceled.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Application.Exit();
                 }
             }

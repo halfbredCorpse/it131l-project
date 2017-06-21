@@ -58,21 +58,28 @@ namespace frm_LogIN
         }
 
         // Singleton instantiation
-        public static Account Instance
+        public static Account CreateInstance(string last_name, string first_name, double balance, string pin, int accountNumber,
+            List<Transaction_History> transaction_history)
         {
-            get
+            if (instance == null)
             {
-                if (instance == null)
+                lock (syncRoot)
                 {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                            instance = new Account(instance.last_name, instance.first_name, instance.balance, instance.pin, instance.accountNumber, instance.transaction_history);
-                    }
+                    if (instance == null)
+                        instance = new Account(last_name,first_name, balance, pin, accountNumber, transaction_history);
                 }
-
-                return instance;
             }
+            else
+            {
+                instance.last_name = last_name;
+                instance.first_name = first_name;
+                instance.balance = balance;
+                instance.pin = pin;
+                instance.accountNumber = accountNumber;
+                instance.transaction_history = transaction_history;
+            }
+
+            return instance;
         }
 
         public void WithdrawMoney(double withdrawAmount)
