@@ -103,6 +103,7 @@
             this.txt_Pin.TabIndex = 7;
             this.txt_Pin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_Pin.UseSystemPasswordChar = true;
+            this.txt_Pin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Pin_KeyPress);
             // 
             // txt_DepositAmount
             // 
@@ -113,6 +114,7 @@
             this.txt_DepositAmount.TabIndex = 6;
             this.txt_DepositAmount.Text = "0.00";
             this.txt_DepositAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_DepositAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_DepositAmount_KeyDown);
             this.txt_DepositAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_DepositAmount_KeyPress);
             this.txt_DepositAmount.Leave += new System.EventHandler(this.txt_DepositAmount_Leave);
             // 

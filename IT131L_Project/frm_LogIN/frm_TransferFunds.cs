@@ -78,6 +78,30 @@ namespace frm_LogIN
             { }
         }
 
+        private void txt_ReceiverAccountNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_Pin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_TransferAmount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void btn_Transfer_Click(object sender, EventArgs e)
         {
             int loginAttempts = 0;
@@ -121,7 +145,6 @@ namespace frm_LogIN
                     Application.Exit();
                 }
             }
-                
         }
 
         private void frm_TransferFunds_FormClosing(object sender, FormClosingEventArgs e)
@@ -132,7 +155,17 @@ namespace frm_LogIN
             if (dialog == DialogResult.Yes)
                 mainMenu.Show();
             else
+            {
                 e.Cancel = true;
+                key = 0;
+
+                txt_Pin.Text = "";
+                txt_ReceiverAccountNumber.Text = "";
+                txt_TransferAmount.Text = "0.00";
+                key = 0;
+
+                txt_TransferAmount.Select();
+            }
         }
 
         // An extension of btnTransfer 
@@ -206,9 +239,6 @@ namespace frm_LogIN
             {
                 MessageBox.Show("Sorry, the acccount #" + txt_ReceiverAccountNumber.Text + " does not exist. Please try again.",
                    "Invalid User");
-                txt_Pin.Text = "";
-                txt_ReceiverAccountNumber.Text = "";
-                txt_TransferAmount.Text = "";
             }
         }
     }

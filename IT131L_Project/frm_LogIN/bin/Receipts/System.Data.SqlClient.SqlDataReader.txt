@@ -1,5 +1,0 @@
-Accout Number: 11385.52
-Transaction Number: System.Data.SqlClient.SqlDataReader
-Transaction Type: WITHDRAWAL
-Amount: PHP 500
-Remaining Balance: PHP 11386

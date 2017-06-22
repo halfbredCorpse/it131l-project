@@ -25,6 +25,8 @@ namespace frm_LogIN
             InitializeComponent();
             this.user = user;
             this.connection = connection;
+
+            key = 0;
         }
 
         private void frm_DepositMoney_Load(object sender, EventArgs e)
@@ -41,7 +43,13 @@ namespace frm_LogIN
             if (dialog == DialogResult.Yes)
                 mainMenu.Show();
             else
+            {
                 e.Cancel = true;
+                key = 0;
+                txt_DepositAmount.Text = "0.00";
+                txt_Pin.Text = "";
+                txt_DepositAmount.Select();
+            }
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -103,8 +111,8 @@ namespace frm_LogIN
                     Application.Exit();
                 }
             }
-                
 
+            key = 0;
             txt_DepositAmount.Text = "0.00";
             txt_Pin.Text = "";
         }
@@ -137,6 +145,22 @@ namespace frm_LogIN
                 e.Handled = true;
             }
             key = 1;
+        }
+
+        private void txt_Pin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_DepositAmount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

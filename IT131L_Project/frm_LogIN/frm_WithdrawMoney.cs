@@ -43,7 +43,14 @@ namespace frm_LogIN
             if (dialog == DialogResult.Yes)
                 mainMenu.Show();
             else
+            {
                 e.Cancel = true;
+                key = 0;
+                key = 0;
+                txt_WithdrawAmount.Text = "0.00";
+                txt_Pin.Text = "";
+                txt_WithdrawAmount.Select();
+            }
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -103,8 +110,9 @@ namespace frm_LogIN
                         while (reader.Read())
                         {
                             string receipt = "Accout Number: " + user.AccountNumber + "\nTransaction Number: " +
-                                reader["current_value"].ToString() + "\nTransaction Type: WITHDRAWAL\nAmount: PHP " +
-                                Math.Round(withdrawAmount, 2) + "\nRemaining Balance: PHP " + Math.Round(user.Balance);
+                                reader["current_value"].ToString() + "\nDate & Time: " + date1 + 
+                                "\nTransaction Type: WITHDRAWAL\nAmount: PHP " + withdrawAmount.ToString("0.00") +
+                                "\nRemaining Balance: PHP " + user.Balance.ToString("0.00");
 
                             File.WriteAllText(Path.Combine(path, reader["current_value"].ToString() + ".txt"), receipt);
                         }
@@ -114,7 +122,9 @@ namespace frm_LogIN
                     }
 
                     connection.Close();
-                    btn_Cancel.Select();   
+                    btn_Cancel.Select();
+
+                    
                 }
             }
             else
@@ -128,8 +138,8 @@ namespace frm_LogIN
                     Application.Exit();
                 }
             }
-                
 
+            key = 0;
             txt_WithdrawAmount.Text = "0.00";
             txt_Pin.Text = "";
             txt_WithdrawAmount.Select();
@@ -162,7 +172,24 @@ namespace frm_LogIN
             {
                 e.Handled = true;
             }
+
             key = 1;
+        }
+
+        private void txt_Pin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_WithdrawAmount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Control && e.KeyCode == Keys.A)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

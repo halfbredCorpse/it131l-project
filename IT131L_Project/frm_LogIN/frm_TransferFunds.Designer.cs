@@ -60,6 +60,7 @@
             this.txt_TransferAmount.TabIndex = 0;
             this.txt_TransferAmount.Text = "0.00";
             this.txt_TransferAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_TransferAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_TransferAmount_KeyDown);
             this.txt_TransferAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TransferAmount_KeyPress);
             this.txt_TransferAmount.Leave += new System.EventHandler(this.txt_TransferAmount_Leave);
             // 
@@ -72,6 +73,7 @@
             this.txt_ReceiverAccountNumber.Size = new System.Drawing.Size(182, 23);
             this.txt_ReceiverAccountNumber.TabIndex = 1;
             this.txt_ReceiverAccountNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_ReceiverAccountNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_ReceiverAccountNumber_KeyPress);
             // 
             // txt_Pin
             // 
@@ -83,6 +85,7 @@
             this.txt_Pin.TabIndex = 2;
             this.txt_Pin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_Pin.UseSystemPasswordChar = true;
+            this.txt_Pin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Pin_KeyPress);
             // 
             // lbl_TransferLabel
             // 

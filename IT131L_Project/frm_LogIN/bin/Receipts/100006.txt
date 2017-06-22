@@ -1,5 +1,5 @@
 Accout Number: 10000000
-Transaction Number: 100015
+Transaction Number: 100006
 Transaction Type: WITHDRAWAL
 Amount: PHP 500
-Remaining Balance: PHP 9886
+Remaining Balance: PHP 14501

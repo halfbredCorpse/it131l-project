@@ -58,6 +58,7 @@
             this.txt_WithdrawAmount.TabIndex = 0;
             this.txt_WithdrawAmount.Text = "0.00";
             this.txt_WithdrawAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_WithdrawAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_WithdrawAmount_KeyDown);
             this.txt_WithdrawAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_WithdrawAmount_KeyPress);
             this.txt_WithdrawAmount.Leave += new System.EventHandler(this.txt_WithdrawAmount_Leave);
             // 
@@ -71,6 +72,7 @@
             this.txt_Pin.TabIndex = 1;
             this.txt_Pin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_Pin.UseSystemPasswordChar = true;
+            this.txt_Pin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Pin_KeyPress);
             // 
             // lbl_WithdrawMessage
             // 

@@ -190,3 +190,10 @@ C:\Users\leesa\Desktop\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microso
 C:\Users\leesa\Desktop\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
 C:\Users\leesa\Desktop\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
 C:\Users\leesa\Desktop\it131l-project\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.RegSvrEnum.dll
+C:\Users\Jasmin Rose Lim\Desktop\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
+C:\Users\Jasmin Rose Lim\Desktop\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+C:\Users\Jasmin Rose Lim\Desktop\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.Smo.dll
+C:\Users\Jasmin Rose Lim\Desktop\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.SmoExtended.dll
+C:\Users\Jasmin Rose Lim\Desktop\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
+C:\Users\Jasmin Rose Lim\Desktop\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
+C:\Users\Jasmin Rose Lim\Desktop\IT131L_Project\frm_LogIN\bin\Debug\Microsoft.SqlServer.RegSvrEnum.dll
