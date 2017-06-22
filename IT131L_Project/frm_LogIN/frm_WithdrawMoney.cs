@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.IO;
 
 namespace frm_LogIN
 {
@@ -11,6 +12,7 @@ namespace frm_LogIN
         Account user;
         double withdrawAmount;
         int key;
+        string path;
 
         SqlCommand cmd;
         SqlConnection connection;
@@ -84,10 +86,34 @@ namespace frm_LogIN
                     cmd.Parameters.AddWithValue("@Account_Number", user.AccountNumber);
                     cmd.ExecuteNonQuery();
 
-                    connection.Close();
-
                     MessageBox.Show("You have successfully withdrawn PHP " + withdrawAmount.ToString("0.00") +
                         "!", "Successful Withdrawal");
+
+                    DialogResult receiptBox = MessageBox.Show("Do you want to print a receipt?", "Print receipt?", MessageBoxButtons.YesNo);
+                    if (receiptBox == DialogResult.Yes)
+                    {
+                        //RECEIPT
+                        cmd = new SqlCommand("SELECT current_value FROM sys.sequences WHERE name = 'Transac_Number_Seq'", connection);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        path = @"..\Receipts";
+                        if (!Directory.Exists(path))
+                            Directory.CreateDirectory(path);
+
+                        while (reader.Read())
+                        {
+                            string receipt = "Accout Number: " + user.AccountNumber + "\nTransaction Number: " +
+                                reader["current_value"].ToString() + "\nTransaction Type: WITHDRAWAL\nAmount: PHP " +
+                                Math.Round(withdrawAmount, 2) + "\nRemaining Balance: PHP " + Math.Round(user.Balance);
+
+                            File.WriteAllText(Path.Combine(path, reader["current_value"].ToString() + ".txt"), receipt);
+                        }
+
+                        //END RECEIPT
+                        MessageBox.Show("Your receipt has been successfully printed!");
+                    }
+
+                    connection.Close();
                     btn_Cancel.Select();   
                 }
             }
