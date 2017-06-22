@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 
 *.exe
 *.pdb
 *.Cache
 IT131L_Project/.vs/IT131L_Project/v15/.suo
+=======
+
+*.Cache
+*.exe
+*.pdb
+>>>>>>> master
