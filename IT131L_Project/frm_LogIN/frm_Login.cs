@@ -41,41 +41,41 @@ namespace frm_LogIN
                 accountNumber = txt_AccountNumber.Text;
                 pin = txt_Pin.Text;
 
-                using (connection = new SqlConnection("Data Source=.\\SQLExpress;Initial Catalog=Project;Integrated Security=True"))
+                connection = new SqlConnection("Data Source=.\\SQLExpress;Initial Catalog=Project;Integrated Security=True");
+                
+                query = "SELECT * FROM Bank_Account where Account_Number = '" + accountNumber + "' AND PIN = '" + pin + "'";
+                sda = new SqlDataAdapter(query, connection);
+                dtbl = new DataTable();
+                sda.Fill(dtbl);
+                selected = dtbl.Select();
+
+                if (dtbl.Rows.Count == 1)
                 {
-                    query = "SELECT * FROM Bank_Account where Account_Number = '" + accountNumber + "' AND PIN = '" + pin + "'";
-                    sda = new SqlDataAdapter(query, connection);
-                    dtbl = new DataTable();
-                    sda.Fill(dtbl);
-                    selected = dtbl.Select();
+                    foreach (DataRow row in selected)
+                        user = Account.CreateInstance(row["Last_Name"].ToString(), row["First_Name"].ToString(), double.Parse(row["Balance"].ToString()), row["PIN"].ToString(), int.Parse(row["Account_Number"].ToString()), new List<Transaction_History>());
 
-                    if (dtbl.Rows.Count == 1)
-                    {
-                        foreach (DataRow row in selected)
-                            user = Account.CreateInstance(row["Last_Name"].ToString(), row["First_Name"].ToString(), double.Parse(row["Balance"].ToString()), row["PIN"].ToString(), int.Parse(row["Account_Number"].ToString()), new List<Transaction_History>());
-
-                        MessageBox.Show("You have successfully logged in.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        mainMenu = new frm_MainMenu(user, connection);
-                        mainMenu.Show();
-                    }
-                    else
-                    {
-                        loginAttempts++;
-                        MessageBox.Show("Your Account Number or PIN is incorrect.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txt_AccountNumber.Select();
-
-                        if (loginAttempts == 3)
-                        {
-                            MessageBox.Show("You have exceeded the number of allowed login attempts. \nPlease try again later.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Application.Exit();
-                        }
-                    }
-
-                    txt_AccountNumber.Clear();
-                    txt_Pin.Clear();
-
-                    dtbl.Clear();
+                    MessageBox.Show("You have successfully logged in.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mainMenu = new frm_MainMenu(user, connection);
+                    mainMenu.Show();
                 }
+                else
+                {
+                    loginAttempts++;
+                    MessageBox.Show("Your Account Number or PIN is incorrect.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txt_AccountNumber.Select();
+
+                    if (loginAttempts == 3)
+                    {
+                        MessageBox.Show("You have exceeded the number of allowed login attempts. \nPlease try again later.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Application.Exit();
+                    }
+                }
+
+                txt_AccountNumber.Clear();
+                txt_Pin.Clear();
+
+                dtbl.Clear();
+                
             }
             catch (Exception ex)
             {

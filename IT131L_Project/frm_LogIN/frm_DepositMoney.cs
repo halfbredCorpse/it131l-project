@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace frm_LogIN
@@ -9,6 +10,7 @@ namespace frm_LogIN
         frm_MainMenu mainMenu;
         Account user;
         double depositAmount;
+        int key;
 
         SqlCommand cmd;
         SqlConnection connection;
@@ -109,16 +111,32 @@ namespace frm_LogIN
 
         private void txt_DepositAmount_Leave(object sender, EventArgs e)
         {
-            depositAmount = double.Parse(txt_DepositAmount.Text);
-            txt_DepositAmount.Text = String.Format("{0:N2}",depositAmount);
+            try
+            {
+                depositAmount = double.Parse(txt_DepositAmount.Text);
+                txt_DepositAmount.Text = String.Format("{0:N2}", depositAmount);
+            }
+            catch
+            { }
         }
 
         private void txt_DepositAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '.')
+            if (key == 0)
+                txt_DepositAmount.Text = "";
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
-                txt_DepositAmount.MaxLength = txt_DepositAmount.TextLength + 3;
+                e.Handled = true;
             }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+            if (Regex.IsMatch(txt_DepositAmount.Text, @"\.\d\d") && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+            key = 1;
         }
     }
 }

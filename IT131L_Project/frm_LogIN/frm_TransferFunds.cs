@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace frm_LogIN
 {
@@ -11,6 +12,7 @@ namespace frm_LogIN
         frm_MainMenu mainMenu;
         Account user, receiver;
         double transferAmount;
+        int key; //checks the number of times the key is pressed 
 
         SqlCommand cmd;
         SqlConnection connection;
@@ -31,6 +33,8 @@ namespace frm_LogIN
             InitializeComponent();
             this.user = user;
             this.connection = connection;
+
+            key = 0;
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -46,16 +50,32 @@ namespace frm_LogIN
 
         private void txt_TransferAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '.')
+            if (key == 0)
+                txt_TransferAmount.Text = "";
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
-                txt_TransferAmount.MaxLength = txt_TransferAmount.TextLength + 3;
+                e.Handled = true;
             }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+            if(Regex.IsMatch(txt_TransferAmount.Text, @"\.\d\d") && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+            key = 1;
         }
 
         private void txt_TransferAmount_Leave(object sender, EventArgs e)
         {
-            transferAmount = double.Parse(txt_TransferAmount.Text);
-            txt_TransferAmount.Text = String.Format("{0:N2}", transferAmount);
+            try
+            {
+                transferAmount = double.Parse(txt_TransferAmount.Text);
+                txt_TransferAmount.Text = String.Format("{0:N2}", transferAmount);
+            }
+            catch
+            { }
         }
 
         private void btn_Transfer_Click(object sender, EventArgs e)
@@ -64,24 +84,30 @@ namespace frm_LogIN
 
             if (txt_Pin.Text == user.Pin.ToString())
             {
-                transferAmount = double.Parse(txt_TransferAmount.Text);
-
-                if (transferAmount <= 0 || transferAmount > user.Balance)
-                    MessageBox.Show("Invalid transfer amount. Please enter a valid amount.", "Transfer Error");
-                else
+                try
                 {
-                    connection.Open();
-
-                    cmd = new SqlCommand("SELECT *" +
-                           " FROM Bank_Account" +
-                           " WHERE Account_Number = '" + txt_ReceiverAccountNumber.Text + "'", connection);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    transferAmount = double.Parse(txt_TransferAmount.Text);
+                    if (transferAmount <= 0 || transferAmount > user.Balance)
+                        MessageBox.Show("Invalid transfer amount. Please enter a valid amount.", "Transfer Error");
+                    else
                     {
-                        TransferValidAmount(reader);
-                    }
+                        connection.Open();
 
-                    connection.Close();
+                        cmd = new SqlCommand("SELECT *" +
+                               " FROM Bank_Account" +
+                               " WHERE Account_Number = '" + txt_ReceiverAccountNumber.Text + "'", connection);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            TransferValidAmount(reader);
+                        }
+
+                        connection.Close();
+                    }
+                }
+                catch
+                {
+                  
                 }
             }
             else
